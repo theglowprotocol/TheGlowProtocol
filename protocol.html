@@ -1,262 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Glow Optimization Pack | The Performance Upgrade</title>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg: #050505;
-            --surface: #0a0a0a;
-            --gold: #c5a47e;
-            --gold-light: #e0c9ac;
-            --green: #2ecc71;
-            --text: #ffffff;
-            --text-dim: #888888;
-            --border: #1a1a1a;
-            --transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Glow | 5-Min Night Skin Reset</title>
 
-        /* Reset & Base */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg); 
-            color: var(--text); 
-            overflow-x: hidden; 
-            line-height: 1.6; 
-            letter-spacing: 0.01em;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; }
-        h1, h2, h3 { font-family: 'Archivo', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; }
-        .italic-serif { font-family: 'Playfair Display', serif; font-style: italic; text-transform: none; letter-spacing: 0; }
-        p { margin-bottom: 1rem; }
+<style>
+:root{
+--bg:#050505;
+--green:#2ecc71;
+--gold:#c5a47e;
+--text:#fff;
+--dim:#888;
+}
 
-        /* Animations */
-        @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); } 70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); } 100% { transform: scale(1); } }
-        @keyframes shine { from { left: -100%; } to { left: 100%; } }
-        
-        /* Hero */
-        .hero { padding: 140px 0 80px; text-align: center; border-bottom: 1px solid var(--border); }
-        .hero span { color: var(--gold); letter-spacing: 5px; font-weight: 700; font-size: 13px; margin-bottom: 25px; display: block; }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); margin-bottom: 35px; }
-        .hero p { max-width: 850px; margin: 0 auto 50px; font-size: 1.25rem; color: var(--text-dim); font-weight: 300; }
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
+}
 
-        /* CTA Button */
-        .btn-cta {
-            position: relative;
-            display: inline-block;
-            background: var(--green);
-            color: #000;
-            padding: 24px 50px;
-            font-size: 1.2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: var(--transition);
-            animation: pulse 2s infinite;
-            text-align: center;
-            width: auto;
-        }
-        .btn-cta:hover { transform: scale(1.05); background: #27ae60; box-shadow: 0 10px 40px rgba(46, 204, 113, 0.3); }
-        .btn-cta::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shine 3s infinite; }
-        .microcopy { display: block; margin-top: 15px; font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; }
+.container{max-width:1100px;margin:auto;padding:20px}
 
-        /* Downsell Button Styling */
-        .btn-downsell {
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 13px;
-            color: var(--text);
-            opacity: 0.7;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        .btn-downsell:hover { text-decoration: underline; opacity: 1; }
+h1{font-size:2.8rem;line-height:1.2}
+h2{font-size:2rem}
+p{color:var(--dim)}
 
-        /* Sections & Grids */
-        .section-padding { padding: 100px 0; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .label { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
-        
-        .card { background: var(--surface); border: 1px solid var(--border); padding: 40px; border-radius: 4px; transition: var(--transition); height: 100%; }
-        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .card h3 { font-size: 1.6rem; margin-bottom: 20px; color: var(--gold); }
+.btn{
+background:var(--green);
+padding:18px;
+display:inline-block;
+color:#000;
+font-weight:900;
+text-decoration:none;
+border-radius:6px;
+transition:.3s;
+}
+.btn:hover{transform:scale(1.05)}
 
-        /* Offer Block */
-        .offer-wrapper { background: radial-gradient(circle at center, #111 0%, #050505 100%); padding: 100px 0; border-top: 1px solid var(--border); }
-        .offer-card { max-width: 650px; margin: 0 auto; background: #000; border: 1px solid var(--gold); border-radius: 8px; overflow: hidden; }
-        .offer-badge { background: var(--gold); color: #000; padding: 15px; font-weight: 900; font-size: 12px; text-align: center; text-transform: uppercase; }
-        .offer-content { padding: 50px 30px; text-align: center; }
+.hero{text-align:center;padding:80px 20px}
+.hero img{max-width:300px;margin:30px 0}
 
-        .bullets { list-style: none; text-align: left; margin: 40px 0; }
-        .bullets li { padding: 14px 0; border-bottom: 1px solid #111; font-size: 0.95rem; color: var(--text-dim); display: flex; align-items: center; gap: 15px; }
-        .bullets li::before { content: '✔️'; color: var(--gold); font-size: 1rem; }
+.badges{font-size:12px;margin-top:10px;color:var(--dim)}
 
-        .price-old { text-decoration: line-through; color: var(--text-dim); font-size: 1.1rem; }
-        .price-main { font-size: 4.5rem; font-weight: 900; color: var(--text); line-height: 1; margin: 15px 0; letter-spacing: -2px; }
+.section{padding:60px 20px}
 
-        /* Accordion FAQ */
-        .faq { padding: 100px 0; background: #fff; color: #000; }
-        .faq h2 { color: #000; text-align: center; margin-bottom: 60px; font-size: 3rem; }
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { border-bottom: 1px solid #eee; }
-        .faq-question {
-            width: 100%; padding: 25px 0; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; transition: var(--transition);
-        }
-        .faq-question:hover { color: var(--gold); }
-        .faq-icon { position: relative; width: 20px; height: 20px; }
-        .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: currentColor; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: var(--transition); }
-        .faq-icon::before { width: 100%; height: 2px; }
-        .faq-icon::after { width: 2px; height: 100%; }
-        .active .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1); color: #555; font-size: 0.95rem; }
-        .faq-answer p { padding-bottom: 25px; margin: 0; }
-        .active + .faq-answer { max-height: 1000px; transition: max-height 0.4s ease-in-out; }
+.grid{display:grid;gap:20px}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
 
-        /* Footer */
-        footer { padding: 80px 0 60px; text-align: center; border-top: 1px solid var(--border); font-size: 10px; color: #333; letter-spacing: 2px; }
+.card{
+background:#0a0a0a;
+padding:20px;
+border-radius:8px;
+border:1px solid #111;
+}
 
-        @media (max-width: 768px) {
-            .section-padding { padding: 45px 0; }
-            .container { padding: 0 20px; }
-            .hero { padding: 80px 0 40px; }
-            .hero h1 { font-size: 2.1rem; line-height: 1.15; margin-bottom: 20px; }
-            .hero p { font-size: 1rem; line-height: 1.5; margin-bottom: 30px; padding: 0 5px; }
-            .btn-cta { width: 100%; padding: 18px 20px; font-size: 0.95rem; }
-            .grid-2 { grid-template-columns: 1fr; gap: 20px; }
-            .card { padding: 25px 20px; }
-            .price-main { font-size: 3.2rem; }
-            h2 { font-size: 1.6rem !important; }
-        }
-    </style>
+.stars{color:gold}
+
+.timer{
+font-size:2rem;
+font-weight:bold;
+margin:20px 0;
+color:var(--green)
+}
+
+.price{
+font-size:3rem;
+font-weight:900;
+}
+
+.old{
+text-decoration:line-through;
+color:var(--dim)
+}
+
+.sticky{
+position:fixed;
+bottom:0;
+width:100%;
+background:#000;
+padding:10px;
+display:flex;
+justify-content:center;
+z-index:999;
+}
+
+.fade{
+opacity:0;
+transform:translateY(20px);
+transition:0.6s;
+}
+.fade.show{
+opacity:1;
+transform:none;
+}
+
+</style>
 </head>
+
 <body>
 
-    <header class="hero container">
-        <span>ORDER STATUS: ALMOST COMPLETE</span>
-        <h1>Want Faster Results? Add The <span class="italic-serif">Optimization</span> Pack</h1>
-        <p>This upgrades what you already have. Use these tiny additions to turn good results into visible transformations in half the time. Same routine, just amplified.</p>
-        
-        <div style="margin-top: 40px;">
-            <a href="#offer" class="btn-cta">Upgrade My Results</a>
-            <span class="microcopy">Instant Add-On • Only $27.90</span>
-        </div>
-    </header>
+<!-- HERO -->
+<section class="hero container fade">
+<h1>Wake Up Looking 10 Years Younger — In Just 5 Minutes a Night</h1>
+<p>The breakthrough night ritual that activates your skin’s natural regeneration while you sleep.</p>
 
-    <section class="section-padding container">
-        <div class="grid-2">
-            <div>
-                <span class="label">The Speed Booster</span>
-                <h2>The Difference Between Slow Progress and <span style="color:var(--gold)">Visible Results.</span></h2>
-                <p style="color: var(--text-dim); margin-top: 25px;">You already have the core system. This pack is the result amplifier. It focuses on the high-leverage micro-habits that make your biological repair work 2x harder while you sleep.</p>
-            </div>
-            <div class="card">
-                <h3>High Leverage</h3>
-                <p>These aren't "more steps" to learn. They are small upgrades to your existing routine that trigger a faster, deeper cellular transformation.</p>
-            </div>
-        </div>
-    </section>
+<img src="https://via.placeholder.com/300x300" alt="product">
 
-    <section class="section-padding" style="background: var(--surface);">
-        <div class="container" style="text-align:center">
-            <span class="label">Optional Enhancer</span>
-            <h2 style="margin-bottom: 40px;">Works WITH What You Just Bought</h2>
-            <div class="grid-2" style="text-align:left">
-                <p>The Glow Optimization Pack was designed to slot perfectly into your new protocol. It tackles the physiological bottlenecks—like lymphatic stagnation and cortisol spikes—that usually slow down progress.</p>
-                <p>By adding these tiny adjustments, you ensure that every minute of your nightly ritual delivers maximum impact. Same routine. Better output.</p>
-            </div>
-            <div style="margin-top: 60px;">
-                <a href="#offer" class="btn-cta">Add This To My Order</a>
-            </div>
-        </div>
-    </section>
+<a href="#offer" class="btn">Get Instant Access</a>
 
-    <section class="section-padding container">
-        <h2 style="text-align:center; margin-bottom: 60px;">Tiny Additions, Big Impact</h2>
-        <div class="grid-2">
-            <div class="card">
-                <span class="label">Upgrade 01</span>
-                <h3>Advanced Decompression</h3>
-                <p>✔️ <strong>Instant Relief:</strong> The massage protocol that resets facial tension in 90 seconds.</p>
-                <p>✔️ <strong>Visible Difference:</strong> Add this to your ritual for a more defined morning look.</p>
-            </div>
-            <div class="card">
-                <span class="label">Upgrade 02</span>
-                <h3>The Full Contrast Shower</h3>
-                <p>✔️ <strong>Science-Led:</strong> The step-by-step thermal method to flush nocturnal toxins.</p>
-                <p>✔️ <strong>Glow Booster:</strong> Small adjustment to your shower for visible skin clarity.</p>
-            </div>
-            <div class="card">
-                <span class="label">Upgrade 03</span>
-                <h3>Cortisol Control Habits</h3>
-                <p>✔️ <strong>Nighttime Recovery:</strong> 3 micro-habits that protect your collagen while you sleep.</p>
-                <p>✔️ <strong>Faster Repair:</strong> Stop stress from sabotaging your cellular regeneration window.</p>
-            </div>
-            <div class="card">
-                <span class="label">Upgrade 04</span>
-                <h3>Acceleration Tracker</h3>
-                <p>✔️ <strong>Visible Proof:</strong> The tracking sheet designed to keep your results on the fast track.</p>
-                <p>✔️ <strong>Stay Consistent:</strong> High-impact visual data to ensure you never miss a transformation day.</p>
-            </div>
-        </div>
-    </section>
+<div class="badges">✔ Secure Checkout ✔ 30-Day Guarantee ✔ Instant Access</div>
+</section>
 
-    <section id="offer" class="offer-wrapper">
-        <div class="container">
-            <div class="offer-card">
-                <div class="offer-badge">ONE-TIME COMPLEMENTARY UPGRADE</div>
-                <div class="offer-content">
-                    
-                    <span class="label">The Performance Pack</span>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Glow Optimization</h2>
-                    <span class="price-anchor" style="display:block; margin-bottom:20px;">A tiny investment for significantly faster results:</span>
+<!-- SOCIAL PROOF -->
+<section class="section container fade">
+<h2>Over 12,000+ Happy Customers</h2>
 
-                    <ul class="bullets">
-                        <li>Advanced Decompression Massage Protocol</li>
-                        <li>Full Contrast Shower Method (Step-by-Step)</li>
-                        <li>Cortisol Control Micro-Habits for Recovery</li>
-                        <li>Glow Acceleration Visual Tracking Sheet</li>
-                        <li>Small tweaks for 2x faster visible results</li>
-                        <li>Works seamlessly with your current order</li>
-                        <li>Instant Digital Access to all protocols</li>
-                    </ul>
+<div class="grid grid-3">
 
-                    <div style="margin-bottom: 30px;">
-                        <span class="price-old">Normal Value: $67.00</span>
-                        <div class="price-main">$27.90</div>
-                        <p style="color:var(--text-dim); font-size: 13px;">Add to order with one click. No extra shipping.</p>
-                    </div>
+<div class="card">
+<div class="stars">★★★★★</div>
+<p>"My skin literally changed in 2 weeks. Unreal."</p>
+<strong>- Sarah M.</strong>
+</div>
 
-                    <a href="#" class="btn-cta" style="width: 100%;">Yes, I Want Faster Results</a>
-                    <div style="text-align: center;">
-                        <a href="https://theglowprotocol.github.io/TheGlowProtocol/essential" class="btn-downsell">No thanks, I’m okay with slower results</a>
-                    </div>
-                    <span class="microcopy">Secure Upgrade • Risk-Free</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="card">
+<div class="stars">★★★★★</div>
+<p>"I stopped wasting money on creams. This WORKS."</p>
+<strong>- Jessica L.</strong>
+</div>
 
-    <footer class="container">
-        © 2026 DEEP GLOW PROTOCOL ® • GLOW OPTIMIZATION PACK. ALL RIGHTS RESERVED.
-    </footer>
+<div class="card">
+<div class="stars">★★★★★</div>
+<p>"I look more rested than ever. People noticed."</p>
+<strong>- Amanda K.</strong>
+</div>
 
-    <script>
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const isOpen = question.classList.contains('active');
-                faqQuestions.forEach(q => q.classList.remove('active'));
-                if (!isOpen) { question.classList.add('active'); }
-            });
-        });
-    </script>
+</div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section container fade">
+<h2>Your Skincare Routine Is Failing You</h2>
+<p>Expensive creams don’t fix the real issue: your body isn’t regenerating properly during sleep.</p>
+<p>This protocol fixes the root cause — not the symptom.</p>
+</section>
+
+<!-- BENEFITS -->
+<section class="section container fade">
+<h2>What You’ll Experience</h2>
+
+<div class="grid grid-3">
+<div class="card">✔ Firmer, tighter skin</div>
+<div class="card">✔ Reduced wrinkles & puffiness</div>
+<div class="card">✔ Natural glow without makeup</div>
+<div class="card">✔ Deeper, more restorative sleep</div>
+<div class="card">✔ Wake up looking refreshed</div>
+<div class="card">✔ Save thousands on skincare</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section container fade">
+<h2>How It Works</h2>
+
+<div class="grid grid-3">
+<div class="card"><strong>1.</strong> Activate гормonal reset</div>
+<div class="card"><strong>2.</strong> Optimize sleep environment</div>
+<div class="card"><strong>3.</strong> Trigger overnight repair</div>
+</div>
+</section>
+
+<!-- OFFER -->
+<section id="offer" class="section container fade">
+
+<h2>Limited Time Offer</h2>
+
+<div class="timer" id="timer">15:00</div>
+
+<p class="old">$98.90</p>
+<div class="price">$47.90</div>
+
+<a href="#" class="btn">Get It Now</a>
+
+<p>Only 37 spots left today</p>
+
+</section>
+
+<!-- GUARANTEE -->
+<section class="section container fade">
+<h2>30-Day Money Back Guarantee</h2>
+<p>If you don’t see visible results, you get 100% of your money back. No questions asked.</p>
+</section>
+
+<!-- FAQ -->
+<section class="section container fade">
+<h2>FAQ</h2>
+
+<p><strong>Does it work for all ages?</strong><br>Yes, it enhances your natural biology.</p>
+<p><strong>How fast are results?</strong><br>Most see changes in 14 days.</p>
+<p><strong>Is it safe?</strong><br>100% natural protocol.</p>
+
+</section>
+
+<!-- FINAL CTA -->
+<section class="section container fade">
+<h2>Start Your Transformation Tonight</h2>
+<a href="#offer" class="btn">Get Instant Access</a>
+</section>
+
+<!-- STICKY CTA -->
+<div class="sticky">
+<a href="#offer" class="btn">Buy Now</a>
+</div>
+
+<script>
+
+// TIMER
+let time = 900;
+const timer = document.getElementById("timer");
+
+setInterval(()=>{
+let m = Math.floor(time/60);
+let s = time%60;
+
+timer.innerHTML = `${m}:${s<10?'0':''}${s}`;
+time--;
+if(time<0) time=900;
+},1000);
+
+// FADE IN
+const fades = document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+fades.forEach(el=>{
+const top = el.getBoundingClientRect().top;
+if(top < window.innerHeight - 50){
+el.classList.add('show');
+}
+});
+});
+
+</script>
+
 </body>
 </html>
