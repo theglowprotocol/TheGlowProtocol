@@ -1,218 +1,207 @@
-/* ============================================================
-   PROJECT: Glow Reset – 5 Day Skin Recovery Plan
-   STYLE: Modern, Premium, High-Conversion
-   TARGET: American Female Market
-============================================================ 
+/* PROJECT: Glow Reset - Premium Conversion V2
+   STYLE: High-End DTC / Apple-esque Direct Response
 */
 
-/* 1. GLOBAL RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@300;400;500&display=swap');
 
 :root {
-    --primary-color: #F87171; /* Modern Coral for Conversion */
-    --primary-hover: #EF4444;
-    --accent-soft: #FFF5F5;   /* Soft Rose Background */
-    --text-main: #1F2937;     /* Deep Charcoal for readability */
-    --text-light: #6B7280;    /* Grey for subheadlines */
-    --white: #FFFFFF;
-    --border-color: #F3F4F6;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* Primary Action - High Contrast */
+    --primary: #FF4D4D;
+    --primary-hover: #E63939;
+    --primary-glow: rgba(255, 77, 77, 0.4);
+    
+    /* Neutral Palette - Premium Depth */
+    --canvas: #FFFFFF;
+    --surface-light: #F9FAFB;
+    --midnight: #0F172A;
+    --midnight-light: #1E293B;
+    
+    /* Accents */
+    --gold: #C5A47E;
+    --gold-soft: #F5F1ED;
+    
+    /* Text */
+    --text-main: #0F172A;
+    --text-muted: #475569;
+    --text-on-dark: #F8FAFC;
+    
+    /* Functional */
+    --radius-lg: 24px;
+    --radius-md: 12px;
+    --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    --shadow-hover: 0 30px 40px -10px rgba(0, 0, 0, 0.12);
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-}
+/* 1. RESET & BASE */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
 body {
-    font-family: var(--font-main);
-    background-color: var(--white);
+    font-family: 'Inter', sans-serif;
     color: var(--text-main);
+    background-color: var(--canvas);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* 2. ESTRUTURA BASE */
 .container {
-    width: 100%;
-    max-width: 1100px;
+    max-width: 1140px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
-.section {
-    padding: 80px 0;
-    position: relative;
-}
-
-.box {
-    background: var(--white);
-    padding: 40px;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow);
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.highlight {
-    background-color: var(--accent-soft);
-    padding: 40px 0;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-}
-
-/* 3. TIPOGRAFIA */
+/* 2. TYPOGRAPHY - THE "PREMIUM" VOICE */
 h1, h2, h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    text-align: center;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
 }
 
 h1 {
-    font-size: clamp(40px, 5vw, 48px);
-    color: var(--text-main);
-    letter-spacing: -0.02em;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1.5rem;
+    color: var(--midnight);
 }
 
 h2 {
-    font-size: clamp(26px, 4vw, 32px);
-    color: var(--text-main);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin-bottom: 1.25rem;
 }
 
 p {
-    font-size: 18px;
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 720px;
 }
 
-strong {
-    color: var(--text-main);
-    font-weight: 700;
+/* 3. SECTION RHYTHM & CONTRAST */
+.section {
+    padding: 100px 0;
 }
 
-/* 4. BOTÕES (CTA) */
+/* Dark Mode Sections for Pattern Interrupt */
+.section-dark {
+    background: var(--midnight);
+    color: var(--text-on-dark);
+}
+
+.section-dark h2 { color: var(--white); }
+.section-dark p { color: #94A3B8; }
+
+.section-alt {
+    background: var(--gold-soft);
+}
+
+/* 4. THE CTA - IMPOSSIBLE TO IGNORE */
 .cta-container {
-    text-align: center;
-    margin: 30px 0;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 }
 
 .cta {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: var(--white);
-    font-size: 20px;
-    font-weight: 700;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
     text-decoration: none;
-    padding: 22px 50px;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 15px -3px rgba(248, 113, 113, 0.4);
-    cursor: pointer;
+    padding: 24px 60px;
+    border-radius: 100px;
+    transition: var(--transition);
     border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px var(--primary-glow);
+    overflow: hidden;
 }
 
 .cta:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 20px 25px -5px rgba(248, 113, 113, 0.5);
+    transform: translateY(-4px) scale(1.02);
+    background: var(--primary-hover);
+    box-shadow: 0 20px 40px var(--primary-glow);
+}
+
+/* Shine effect on hover */
+.cta::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255,255,255,0.2);
+    transform: rotate(30deg);
+    transition: var(--transition);
+}
+
+.cta:hover::after {
+    left: 120%;
 }
 
 .cta-secondary {
-    display: inline-block;
-    color: var(--text-light);
-    font-size: 14px;
-    text-decoration: underline;
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: color 0.2s;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: 0.2s;
 }
 
-.cta-secondary:hover {
-    color: var(--text-main);
+.cta-secondary:hover { opacity: 1; text-decoration: underline; }
+
+/* 5. COMPONENTS - CARDS & BOXES */
+.box {
+    background: white;
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-premium);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: var(--transition);
 }
 
-/* 5. AUXILIARY CLASSES */
-.text-center { text-align: center; }
+.box:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
 .img-responsive {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
+    width: 100%;
+    max-width: 800px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-premium);
+    margin: 40px auto;
     display: block;
-    margin: 20px auto;
 }
 
-/* 6. RESPONSIVIDADE (MOBILE-FIRST REFINEMENT) */
+/* 6. ANIMATIONS */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating { animation: float 4s ease-in-out infinite; }
+
+/* 7. MOBILE REFINEMENT */
 @media (max-width: 768px) {
-    .section {
-        padding: 40px 0;
-    }
-
-    .container {
-        padding: 0 20px;
-    }
-
-    h1 {
-        font-size: 28px; /* Compact & Professional */
-        line-height: 1.1;
-    }
-
-    h2 {
-        font-size: 22px;
-    }
-
-    p {
-        font-size: 16px;
-        line-height: 1.5;
-    }
-
-    .box {
-        padding: 25px 20px;
-        border-radius: 12px;
-    }
-
-    .cta {
-        width: 100%; /* Full width for thumbs */
-        font-size: 18px;
-        padding: 18px 20px;
-        border-radius: 8px; /* Slightly sharper for compact look */
-    }
-
-    .cta-container {
-        margin: 20px 0;
-    }
+    .section { padding: 60px 0; }
     
-    /* Avoid huge gaps on mobile */
-    .highlight {
-        padding: 30px 0;
+    h1 { text-align: center; line-height: 1.2; }
+    
+    .box { padding: 1.5rem; border-radius: var(--radius-md); }
+    
+    .cta {
+        width: 100%;
+        padding: 20px;
+        font-size: 1.1rem;
     }
-}
-
-/* 7. PERFORMANCE & CLEANUP */
-.no-scroll { overflow: hidden; }
-button:focus { outline: none; }
-
-/* Subtle Animation for Attention */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
-}
-
-.cta-pulse {
-    animation: pulse 2s infinite;
 }
