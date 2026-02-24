@@ -1,6 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Glow | 5-Min Night Skin Reset</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#050505;
+--green:#2ecc71;
+--gold:#c5a47e;
+--text:#fff;
+--dim:#888;
+}
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
+}
+
+.container{max-width:1100px;margin:auto;padding:20px}
+
+h1{font-size:2.8rem;line-height:1.2}
+h2{font-size:2rem}
+p{color:var(--dim)}
+
+.btn{
+background:var(--green);
+padding:18px;
+display:inline-block;
+color:#000;
+font-weight:900;
+text-decoration:none;
+border-radius:6px;
+transition:.3s;
+}
+.btn:hover{transform:scale(1.05)}
+
+.hero{text-align:center;padding:80px 20px}
+.hero img{max-width:300px;margin:30px 0}
+
+.badges{font-size:12px;margin-top:10px;color:var(--dim)}
+
+.section{padding:60px 20px}
+
+.grid{display:grid;gap:20px}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+
+.card{
+background:#0a0a0a;
+padding:20px;
+border-radius:8px;
+border:1px solid #111;
+}
+
+.stars{color:gold}
+
+.timer{
+font-size:2rem;
+font-weight:bold;
+margin:20px 0;
+color:var(--green)
+}
+
+.price{
+font-size:3rem;
+font-weight:900;
+}
+
+.old{
+text-decoration:line-through;
+color:var(--dim)
+}
+
+.sticky{
+position:fixed;
+bottom:0;
+width:100%;
+background:#000;
+padding:10px;
+display:flex;
+justify-content:center;
+z-index:999;
+}
+
+.fade{
+opacity:0;
+transform:translateY(20px);
+transition:0.6s;
+}
+.fade.show{
+opacity:1;
+transform:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero container fade">
+<h1>Wake Up Looking 10 Years Younger — In Just 5 Minutes a Night</h1>
+<p>The breakthrough night ritual that activates your skin’s natural regeneration while you sleep.</p>
+
+<img src="https://via.placeholder.com/300x300" alt="product">
+
+<a href="#offer" class="btn">Get Instant Access</a>
+
+<div class="badges">✔ Secure Checkout ✔ 30-Day Guarantee ✔ Instant Access</div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="section container fade">
+<h2>Over 12,000+ Happy Customers</h2>
+
+<div class="grid grid-3">
+
+<div class="card">
+<div class="stars">★★★★★</div>
+<p>"My skin literally changed in 2 weeks. Unreal."</p>
+<strong>- Sarah M.</strong>
+</div>
+
+<div class="card">
+<div class="stars">★★★★★</div>
+<p>"I stopped wasting money on creams. This WORKS."</p>
+<strong>- Jessica L.</strong>
+</div>
+
+<div class="card">
+<div class="stars">★★★★★</div>
+<p>"I look more rested than ever. People noticed."</p>
+<strong>- Amanda K.</strong>
+</div>
+
+</div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section container fade">
+<h2>Your Skincare Routine Is Failing You</h2>
+<p>Expensive creams don’t fix the real issue: your body isn’t regenerating properly during sleep.</p>
+<p>This protocol fixes the root cause — not the symptom.</p>
+</section>
+
+<!-- BENEFITS -->
+<section class="section container fade">
+<h2>What You’ll Experience</h2>
+
+<div class="grid grid-3">
+<div class="card">✔ Firmer, tighter skin</div>
+<div class="card">✔ Reduced wrinkles & puffiness</div>
+<div class="card">✔ Natural glow without makeup</div>
+<div class="card">✔ Deeper, more restorative sleep</div>
+<div class="card">✔ Wake up looking refreshed</div>
+<div class="card">✔ Save thousands on skincare</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section container fade">
+<h2>How It Works</h2>
+
+<div class="grid grid-3">
+<div class="card"><strong>1.</strong> Activate гормonal reset</div>
+<div class="card"><strong>2.</strong> Optimize sleep environment</div>
+<div class="card"><strong>3.</strong> Trigger overnight repair</div>
+</div>
+</section>
+
+<!-- OFFER -->
+<section id="offer" class="section container fade">
+
+<h2>Limited Time Offer</h2>
+
+<div class="timer" id="timer">15:00</div>
+
+<p class="old">$98.90</p>
+<div class="price">$47.90</div>
+
+<a href="#" class="btn">Get It Now</a>
+
+<p>Only 37 spots left today</p>
+
+</section>
+
+<!-- GUARANTEE -->
+<section class="section container fade">
+<h2>30-Day Money Back Guarantee</h2>
+<p>If you don’t see visible results, you get 100% of your money back. No questions asked.</p>
+</section>
+
+<!-- FAQ -->
+<section class="section container fade">
+<h2>FAQ</h2>
+
+<p><strong>Does it work for all ages?</strong><br>Yes, it enhances your natural biology.</p>
+<p><strong>How fast are results?</strong><br>Most see changes in 14 days.</p>
+<p><strong>Is it safe?</strong><br>100% natural protocol.</p>
+
+</section>
+
+<!-- FINAL CTA -->
+<section class="section container fade">
+<h2>Start Your Transformation Tonight</h2>
+<a href="#offer" class="btn">Get Instant Access</a>
+</section>
+
+<!-- STICKY CTA -->
+<div class="sticky">
+<a href="#offer" class="btn">Buy Now</a>
+</div>
+
+<script>
+
+// TIMER
+let time = 900;
+const timer = document.getElementById("timer");
+
+setInterval(()=>{
+let m = Math.floor(time/60);
+let s = time%60;
+
+timer.innerHTML = `${m}:${s<10?'0':''}${s}`;
+time--;
+if(time<0) time=900;
+},1000);
+
+// FADE IN
+const fades = document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+fades.forEach(el=>{
+const top = el.getBoundingClientRect().top;
+if(top < window.innerHeight - 50){
+el.classList.add('show');
+}
+});
+});
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep Glow | The Biological Standard for Skin Regeneration</title>
