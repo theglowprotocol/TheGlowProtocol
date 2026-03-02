@@ -1,68 +1,76 @@
-/* ===== FIX MOBILE LAYOUT (SEM QUEBRAR DESIGN) ===== */
+/* ===== FIX MOBILE LAYOUT (ESTRUTURADO) ===== */
 
-/* Stack padrão */
-.mobile-stack {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-/* Grid de 2 colunas controlado */
+/* 1. Layouts de Coluna (Desktop) */
 .two-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
 }
 
-/* Evita overflow e esmagamento */
+/* 2. Base Segura */
 .box {
     max-width: 100%;
     width: 100%;
+    box-sizing: border-box; /* Garante que padding não estoure a largura */
 }
 
-/* Melhor leitura geral */
 .container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Evita elementos estourando horizontal */
 body {
     overflow-x: hidden;
+    word-wrap: break-word; /* Evita que palavras longas quebrem o layout */
 }
 
-/* Ajustes reais de mobile */
+/* 3. Ajustes de Responsividade (Mobile) */
 @media (max-width: 768px) {
 
-    /* Força tudo virar 1 coluna */
-    .mobile-stack,
-    .two-columns {
-        display: grid;
-        grid-template-columns: 1fr !important;
+    /* Força Grids e Flexbox a virarem 1 coluna no celular */
+    .mobile-stack, 
+    .two-columns,
+    [style*="display: grid"], 
+    [style*="display: flex"]:not(#timer) { 
+        display: block !important; /* Block é mais seguro que grid 1fr para evitar bugs de largura */
     }
 
-    /* Corrige paddings exagerados vindos do HTML */
-    [style*="padding: 50px"] {
+    /* Adiciona espaçamento entre elementos que empilharam */
+    .mobile-stack > *, 
+    .two-columns > *,
+    [style*="display: grid"] > * {
+        margin-bottom: 20px;
+        width: 100% !important;
+    }
+
+    /* Corrige paddings excessivos do HTML Inline */
+    [style*="padding: 50px"],
+    [style*="padding: 40px"] {
         padding: 25px !important;
     }
 
-    /* Evita textos esmagados */
-    p {
-        font-size: 1rem;
-        line-height: 1.5;
-    }
+    /* Ajuste de Tipografia para Mobile */
+    h1 { font-size: 1.8rem !important; line-height: 1.2 !important; }
+    h2 { font-size: 1.5rem !important; }
+    p { font-size: 1rem; line-height: 1.5; }
 
-    /* Timer quebra linha corretamente */
+    /* Timer - Mantém flex mas permite quebra */
     #timer {
-        display: flex;
-        justify-content: center;
+        display: flex !important;
+        justify-content: center !important;
         flex-wrap: wrap;
-        gap: 10px;
-        text-align: center;
+        gap: 15px;
     }
 
-    /* 🔴 CORREÇÃO IMPORTANTE:
-       isso aqui estava quebrando layout geral */
-    [style*="grid-template-columns"] {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
+    /* Remove bordas laterais que ficam feias no mobile (comum em divisórias) */
+    [style*="border-left"], 
+    [style*="border-right"] {
+        border-left: none !important;
+        border-right: none !important;
+        border-top: 1px solid rgba(0,0,0,0.1); /* Transforma em divisória horizontal */
+        padding-left: 0 !important;
+        margin-top: 20px;
     }
 }
