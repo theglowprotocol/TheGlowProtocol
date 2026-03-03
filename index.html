@@ -175,63 +175,59 @@
             </div>
         </section>
 
-        <section class="section section-alt">
-            <div class="container">
-                <div class="box" style="max-width: 800px; margin: 0 auto;">
-                    <h2 class="text-center" style="margin-bottom: 40px;">Common Questions</h2>
-                    
-                    <div class="faq-list">
-                        <div style="border-bottom: 1px solid #eee; padding: 20px 0;">
-                            <button onclick="toggleFaq(this)" style="width: 100%; background: none; border: none; text-align: left; font-family: 'Plus Jakarta Sans'; font-weight: 700; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
-                                How soon will I see a difference? <span>+</span>
-                            </button>
-                            <div class="faq-content" style="max-height: 0; overflow: hidden; transition: 0.3s;">
-                                <p style="padding-top: 15px; font-size: 1rem; color: #4B5563;">You’ll feel the internal shift on Day 1. Most users report a visible reduction in morning puffiness and eye bags by the morning of Day 2.</p>
-                            </div>
-                        </div>
-
-                        <div style="border-bottom: 1px solid #eee; padding: 20px 0;">
-                            <button onclick="toggleFaq(this)" style="width: 100%; background: none; border: none; text-align: left; font-family: 'Plus Jakarta Sans'; font-weight: 700; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
-                                Does this require expensive supplements? <span>+</span>
-                            </button>
-                            <div class="faq-content" style="max-height: 0; overflow: hidden; transition: 0.3s;">
-                                <p style="padding-top: 15px; font-size: 1rem; color: #4B5563;">No. This protocol relies on biological triggers: hydration timing, temperature shifts, and movement. It's about how you use what you already have.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <section class="section-padding container">
+        <div class="faq-box">
+            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">Questions?</h2>
+            <div class="faq-item">
+                <button class="faq-trigger" onclick="toggleFaq(this)">How soon will I see results? <span>+</span></button>
+                <div class="faq-content"><p>You will notice a reduction in morning puffiness by Day 2. By Day 5, your skin's texture and natural "glow" will be visibly restored.</p></div>
             </div>
-        </section>
-    </main>
-
-    <footer class="section" style="padding: 50px 0; border-top: 1px solid #eee;">
-        <div class="container text-center">
-            <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--text-muted); margin: 0 auto;">© 2026 DEEP GLOW PROTOCOL • THE BIOLOGICAL STANDARD</p>
+            <div class="faq-item">
+                <button class="faq-trigger" onclick="toggleFaq(this)">Do I need to buy products? <span>+</span></button>
+                <div class="faq-content"><p>No. This protocol relies on biological triggers like timing, temperature, and specific movements. No extra serums required.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger" onclick="toggleFaq(this)">Is it a subscription? <span>+</span></button>
+                <div class="faq-content"><p>No. This is a one-time investment of $7.90 for lifetime digital access to the protocol.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger" onclick="toggleFaq(this)">What if it doesn't work? <span>+</span></button>
+                <div class="faq-content"><p>We offer a 7-day money-back guarantee. If you don't feel a difference, we refund your $7.90 immediately.</p></div>
+            </div>
         </div>
+    </section>
+
+
+        
+    <footer>
+        © 2026 DEEP GLOW PROTOCOL • THE BIOLOGICAL STANDARD
     </footer>
 
     <script>
+        // Timer Logic
         function startTimer(duration) {
             let timer = duration, hours, minutes, seconds;
             setInterval(function () {
                 hours = parseInt(timer / 3600, 10);
                 minutes = parseInt((timer % 3600) / 60, 10);
                 seconds = parseInt(timer % 60, 10);
+
                 document.getElementById('h').textContent = hours < 10 ? "0" + hours : hours;
                 document.getElementById('m').textContent = minutes < 10 ? "0" + minutes : minutes;
                 document.getElementById('s').textContent = seconds < 10 ? "0" + seconds : seconds;
+
                 if (--timer < 0) timer = duration;
             }, 1000);
         }
 
+        // FAQ Toggle
         function toggleFaq(btn) {
             const content = btn.nextElementSibling;
-            const isOpen = content.style.maxHeight !== "0px" && content.style.maxHeight !== "";
+            const isOpen = content.style.maxHeight;
             document.querySelectorAll('.faq-content').forEach(c => c.style.maxHeight = null);
-            if (!isOpen) {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
+            content.style.maxHeight = isOpen ? null : content.scrollHeight + "px";
         }
+
         window.onload = function () { startTimer(7200); };
     </script>
 </body>
