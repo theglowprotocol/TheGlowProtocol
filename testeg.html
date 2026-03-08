@@ -3,46 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        .container { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
-        .card { border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 15px; background: #f9f9f9; }
-        .header { display: flex; align-items: center; margin-bottom: 10px; }
-        .avatar { width: 40px; height: 40px; background: #ccc; border-radius: 50%; margin-right: 10px; }
-        .name { font-weight: bold; color: #365899; }
-        .date { font-size: 0.8em; color: #65676b; }
-        .comment { color: #1c1e21; line-height: 1.4; }
+        .social-proof-section { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; max-width: 800px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h2 { text-align: center; color: #1c1e21; margin-bottom: 30px; }
+        .testimonial-card { display: flex; gap: 15px; border-bottom: 1px solid #edeff2; padding: 20px 0; }
+        .avatar { width: 50px; height: 50px; background: #ddd; border-radius: 50%; flex-shrink: 0; }
+        .content { flex-grow: 1; }
+        .name { font-weight: 700; color: #365899; margin-bottom: 2px; }
+        .stars { color: #f0ad4e; font-size: 14px; margin-bottom: 5px; }
+        .text { color: #4b4f56; line-height: 1.5; }
+        .badge { display: inline-block; background: #e7f3ff; color: #365899; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-top: 8px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>O que nossos clientes dizem</h2>
+<section class="social-proof-section">
+    <h2>Quem comprou, aprovou! ⭐</h2>
 
-    <div class="card">
-        <div class="header">
-            <div class="avatar"></div>
-            <div>
-                <div class="name">Ana Silva</div>
-                <div class="date">Há 2 dias</div>
-            </div>
-        </div>
-        <div class="comment">
-            "Simplesmente amei! O produto chegou super rápido e a qualidade é muito superior ao que eu esperava. Recomendo demais!"
+    <div class="testimonial-card">
+        <div class="avatar" style="background-color: #3b5998;"></div>
+        <div class="content">
+            <div class="name">Mariana Oliveira</div>
+            <div class="stars">★★★★★</div>
+            <div class="text">"Produto incrível! A entrega foi muito rápida e o suporte me ajudou com todas as dúvidas. Vale cada centavo!"</div>
+            <div class="badge">Compra Verificada ✅</div>
         </div>
     </div>
 
-    <div class="card">
-        <div class="header">
-            <div class="avatar"></div>
-            <div>
-                <div class="name">Carlos Souza</div>
-                <div class="date">Há 1 semana</div>
-            </div>
-        </div>
-        <div class="comment">
-            "Estava com receio no começo, mas depois que usei vi que realmente funciona. Mudou minha rotina para melhor."
+    <div class="testimonial-card">
+        <div class="avatar" style="background-color: #898f9c;"></div>
+        <div class="content">
+            <div class="name">Ricardo Farias</div>
+            <div class="stars">★★★★★</div>
+            <div class="text">"Tinha visto anúncios no Instagram e estava cético, mas me surpreendi. A qualidade é muito acima da média."</div>
+            <div class="badge">Compra Verificada ✅</div>
         </div>
     </div>
-</div>
+
+    <div class="testimonial-card">
+        <div class="avatar" style="background-color: #606770;"></div>
+        <div class="content">
+            <div class="name">Juliana Costa</div>
+            <div class="stars">★★★★☆</div>
+            <div class="text">"Minha rotina mudou completamente depois que comecei a usar. Entrega discreta e produto muito bem embalado."</div>
+            <div class="badge">Compra Verificada ✅</div>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>
