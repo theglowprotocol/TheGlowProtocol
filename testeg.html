@@ -1,51 +1,71 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <style>
-        .social-proof-section { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; max-width: 800px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        h2 { text-align: center; color: #1c1e21; margin-bottom: 30px; }
-        .testimonial-card { display: flex; gap: 15px; border-bottom: 1px solid #edeff2; padding: 20px 0; }
-        .avatar { width: 50px; height: 50px; background: #ddd; border-radius: 50%; flex-shrink: 0; }
-        .content { flex-grow: 1; }
-        .name { font-weight: 700; color: #365899; margin-bottom: 2px; }
-        .stars { color: #f0ad4e; font-size: 14px; margin-bottom: 5px; }
-        .text { color: #4b4f56; line-height: 1.5; }
-        .badge { display: inline-block; background: #e7f3ff; color: #365899; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-top: 8px; }
+        .social-proof-container {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-top: 4px solid #1877f2; /* FB Blue */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .header-text { text-align: center; margin-bottom: 40px; }
+        .header-text h2 { font-size: 32px; color: #1c1e21; margin-bottom: 10px; }
+        .stars { color: #f5a623; font-size: 20px; margin-bottom: 10px; }
+        
+        .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        
+        .card { 
+            background: #f7f8fa; 
+            padding: 25px; 
+            border-radius: 8px; 
+            border: 1px solid #dddfe2;
+        }
+        .profile { display: flex; align-items: center; margin-bottom: 15px; }
+        .avatar { width: 45px; height: 45px; background: #333; border-radius: 50%; margin-right: 12px; }
+        .name { font-weight: 700; color: #1c1e21; }
+        .meta { font-size: 12px; color: #606770; }
+        .review-text { font-size: 15px; color: #4b4f56; line-height: 1.6; font-style: italic; }
+        .verified { display: flex; align-items: center; color: #42b72a; font-weight: 600; font-size: 12px; margin-top: 15px; }
+        
+        @media (max-width: 600px) { .testimonial-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-<section class="social-proof-section">
-    <h2>Quem comprou, aprovou! ⭐</h2>
-
-    <div class="testimonial-card">
-        <div class="avatar" style="background-color: #3b5998;"></div>
-        <div class="content">
-            <div class="name">Mariana Oliveira</div>
-            <div class="stars">★★★★★</div>
-            <div class="text">"Produto incrível! A entrega foi muito rápida e o suporte me ajudou com todas as dúvidas. Vale cada centavo!"</div>
-            <div class="badge">Compra Verificada ✅</div>
-        </div>
+<section class="social-proof-container">
+    <div class="header-text">
+        <h2>Don't just take our word for it</h2>
+        <div class="stars">★★★★★</div>
+        <p>Rated 4.9/5 based on over 1,200+ customer reviews.</p>
     </div>
 
-    <div class="testimonial-card">
-        <div class="avatar" style="background-color: #898f9c;"></div>
-        <div class="content">
-            <div class="name">Ricardo Farias</div>
-            <div class="stars">★★★★★</div>
-            <div class="text">"Tinha visto anúncios no Instagram e estava cético, mas me surpreendi. A qualidade é muito acima da média."</div>
-            <div class="badge">Compra Verificada ✅</div>
+    <div class="testimonial-grid">
+        <div class="card">
+            <div class="profile">
+                <div class="avatar" style="background: #5890ff;"></div>
+                <div>
+                    <div class="name">Sarah Jenkins</div>
+                    <div class="meta">Verified Buyer • Texas</div>
+                </div>
+            </div>
+            <div class="review-text">"I was skeptical at first, but after one week of use, I'm absolutely blown away. This is exactly what I needed to solve my problem. Fast shipping, too!"</div>
+            <div class="verified">✓ Verified Purchase</div>
         </div>
-    </div>
 
-    <div class="testimonial-card">
-        <div class="avatar" style="background-color: #606770;"></div>
-        <div class="content">
-            <div class="name">Juliana Costa</div>
-            <div class="stars">★★★★☆</div>
-            <div class="text">"Minha rotina mudou completamente depois que comecei a usar. Entrega discreta e produto muito bem embalado."</div>
-            <div class="badge">Compra Verificada ✅</div>
+        <div class="card">
+            <div class="profile">
+                <div class="avatar" style="background: #ff5858;"></div>
+                <div>
+                    <div class="name">Mark Thompson</div>
+                    <div class="meta">Verified Buyer • California</div>
+                </div>
+            </div>
+            <div class="review-text">"Premium quality. You can tell they put a lot of thought into the design and durability. I’ve already recommended this to my entire team."</div>
+            <div class="verified">✓ Verified Purchase</div>
         </div>
     </div>
 </section>
