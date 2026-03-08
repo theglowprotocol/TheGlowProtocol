@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Fundo de Chuva Suave</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita barras de rolagem */
+            background-color: #0b1018; /* Cor de fundo escura */
+        }
+
+        canvas {
+            display: block;
+        }
+
+        /* Conteúdo sobre o fundo */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            pointer-events: none; /* Permite clicar através do texto */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>Chuva Suave</h1>
+        <p>Um fundo animado e minimalista.</p>
+    </div>
+
+    <canvas id="rainCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('rainCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const numberOfParticles = 100; // Quantidade de gotas
+
+        class RainDrop {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.length = Math.random() * 20 + 10; // Tamanho da gota
+                this.speed = Math.random() * 3 + 2;    // Velocidade da queda
+                this.opacity = Math.random() * 0.3;    // Transparência suave
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(174, 194, 224, ${this.opacity})`;
+                ctx.lineWidth = 1;
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x, this.y + this.length);
+                ctx.stroke();
+            }
+
+            update() {
+                this.y += this.speed;
+                if (this.y > canvas.height) {
+                    this.y = -this.length;
+                    this.x = Math.random() * canvas.width;
+                }
+                this.draw();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new RainDrop());
+            }
+        }
+
+        function animate() {
+            // Limpa o canvas e deixa um rastro leve (motion blur)
+            ctx.fillStyle = 'rgba(11, 16, 24, 0.5)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(p => p.update());
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            init();
+        });
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
