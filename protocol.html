@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Deep Glow | The Biological Standard</title>
+    <title>Deep Glow | 5-Day Reset Protocol</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #030508;
-            --surface: rgba(255,255,255,0.02);
-            --gold: #fbbf24;
-            --gold-light: #fef3c7;
+            --bg: #050505;
+            --surface: #0a0a0a;
+            --gold: #c5a47e;
+            --gold-light: #e0c9ac;
             --green: #2ecc71;
             --text: #ffffff;
-            --text-dim: #d1d5db;
-            --border: rgba(255,255,255,0.08);
+            --text-dim: #888888;
+            --border: #1a1a1a;
             --transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
@@ -32,9 +32,9 @@
         }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; }
-        h1, h2, h3 { font-family: 'Archivo', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; color: #ffffff; }
+        h1, h2, h3 { font-family: 'Archivo', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; }
         .italic-serif { font-family: 'Playfair Display', serif; font-style: italic; text-transform: none; letter-spacing: 0; }
-        p { margin-bottom: 1rem; color: var(--text-dim); }
+        p { margin-bottom: 1rem; }
 
         /* Animations */
         @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); } 70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); } 100% { transform: scale(1); } }
@@ -66,143 +66,116 @@
         }
         .btn-cta:hover { transform: scale(1.05); background: #27ae60; box-shadow: 0 10px 40px rgba(46, 204, 113, 0.3); }
         .btn-cta::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shine 3s infinite; }
-        .microcopy { display: block; margin-top: 15px; font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 2px; }
-
-        /* Downsell Button Styling */
-        .btn-downsell {
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 13px;
-            color: var(--text);
-            opacity: 0.6;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        .btn-downsell:hover { text-decoration: underline; opacity: 1; }
+        .microcopy { display: block; margin-top: 15px; font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; }
 
         /* Sections & Grids */
         .section-padding { padding: 100px 0; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .label { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
         
         .card { background: var(--surface); border: 1px solid var(--border); padding: 40px; border-radius: 4px; transition: var(--transition); height: 100%; }
         .card:hover { border-color: var(--gold); transform: translateY(-5px); }
         .card h3 { font-size: 1.6rem; margin-bottom: 20px; color: var(--gold); }
+        .card h4 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; text-transform: uppercase; }
 
         /* Offer Block */
-        .offer-wrapper { background: #000; padding: 100px 0; border-top: 1px solid var(--border); }
-        .offer-card { max-width: 650px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid var(--gold); border-radius: 8px; overflow: hidden; }
+        .offer-wrapper { background: radial-gradient(circle at center, #111 0%, #050505 100%); padding: 100px 0; border-top: 1px solid var(--border); }
+        .offer-card { max-width: 650px; margin: 0 auto; background: #000; border: 1px solid var(--gold); border-radius: 8px; overflow: hidden; }
         .offer-badge { background: var(--gold); color: #000; padding: 15px; font-weight: 900; font-size: 12px; text-align: center; text-transform: uppercase; }
         .offer-content { padding: 50px 30px; text-align: center; }
 
         .bullets { list-style: none; text-align: left; margin: 40px 0; }
-        .bullets li { padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--text-dim); display: flex; align-items: center; gap: 15px; }
-        .bullets li::before { content: '✔️'; color: var(--gold); font-size: 1rem; }
+        .bullets li { padding: 14px 0; border-bottom: 1px solid #111; font-size: 0.95rem; color: var(--text-dim); display: flex; align-items: center; gap: 15px; }
+        .bullets li::before { content: '✓'; color: var(--gold); font-weight: bold; }
 
-        .price-old { text-decoration: line-through; color: #9ca3af; font-size: 1.1rem; }
-        .price-main { font-size: 4.5rem; font-weight: 900; color: #ffffff; line-height: 1; margin: 15px 0; letter-spacing: -2px; }
+        .price-old { text-decoration: line-through; color: var(--text-dim); font-size: 1.1rem; }
+        .price-main { font-size: 4.5rem; font-weight: 900; color: var(--text); line-height: 1; margin: 15px 0; letter-spacing: -2px; }
 
-        /* Accordion FAQ */
-        .faq { padding: 100px 0; background: #000; color: #ffffff; }
-        .faq h2 { color: #ffffff; text-align: center; margin-bottom: 60px; font-size: 3rem; }
+        /* FAQ */
+        .faq { padding: 100px 0; background: #fff; color: #000; }
+        .faq h2 { color: #000; text-align: center; margin-bottom: 60px; font-size: 3rem; }
         .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-item { border-bottom: 1px solid #eee; }
         .faq-question {
-            width: 100%; padding: 25px 0; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; transition: var(--transition); color: #ffffff;
+            width: 100%; padding: 25px 0; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; transition: var(--transition);
         }
         .faq-question:hover { color: var(--gold); }
-        .faq-icon { position: relative; width: 20px; height: 20px; }
-        .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: currentColor; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: var(--transition); }
-        .faq-icon::before { width: 100%; height: 2px; }
-        .faq-icon::after { width: 2px; height: 100%; }
-        .active .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1); color: var(--text-dim); font-size: 0.95rem; }
-        .faq-answer p { padding-bottom: 25px; margin: 0; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1); color: #555; }
         .active + .faq-answer { max-height: 1000px; transition: max-height 0.4s ease-in-out; }
 
-        /* Footer */
-        footer { padding: 80px 0 60px; text-align: center; border-top: 1px solid var(--border); font-size: 10px; color: #4b5563; letter-spacing: 2px; }
-
         @media (max-width: 768px) {
-            .section-padding { padding: 45px 0; }
-            .container { padding: 0 20px; }
-            .hero { padding: 80px 0 40px; }
-            .hero h1 { font-size: 2.1rem; line-height: 1.15; margin-bottom: 20px; }
-            .hero p { font-size: 1rem; line-height: 1.5; margin-bottom: 30px; padding: 0 5px; }
-            .btn-cta { width: 100%; padding: 18px 20px; font-size: 0.95rem; }
-            .grid-2 { grid-template-columns: 1fr; gap: 20px; }
-            .card { padding: 25px 20px; }
-            .price-main { font-size: 3.2rem; }
-            h2 { font-size: 1.6rem !important; }
+            .hero h1 { font-size: 2.5rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .price-main { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
     <header class="hero container">
-        <span>⚠️ LIMITED ENROLLMENT CLOSING SOON</span>
-        <h1>Unlock A Radiant, Youthful Complexion With This Simple 5-Minute Nighttime Hack</h1>
-        <p>You don't need expensive procedures or a dozen serums. By mastering your body's natural nocturnal repair cycle, you can wake up looking refreshed, firm, and years younger.</p>
+        <span>BIOLOGICAL PROTOCOL • 5-NIGHT RESET</span>
+        <h1>Wake Up to Radiant Skin <br> <span class="italic-serif">Results in 5 Days.</span></h1>
+        <p>Stop fighting your biology. A simple, science-based protocol to neutralize stress and trigger deep cellular repair while you sleep. Fast to apply, impossible to ignore.</p>
         
         <div style="margin-top: 40px;">
-            <a href="#offer" class="btn-cta">Start Your Transformation</a>
-            <span class="microcopy">Secure Digital Access • Immediate Results</span>
+            <a href="#offer" class="btn-cta">Start My 5-Day Reset</a>
+            <span class="microcopy">Instant Access • Results by Day 2</span>
         </div>
     </header>
 
     <section class="section-padding container">
         <div class="grid-2">
             <div>
-                <span class="label">THE HIDDEN PROBLEM</span>
-                <h2>Why Your Current Skincare Routine Is <span style="color:var(--gold)">Working Against You.</span></h2>
-                <p style="margin-top: 25px;">You're likely wasting hundreds of dollars on products that can't penetrate your skin's surface. If your body's internal clock and stress hormones are out of balance, your skin physically cannot regenerate. You're trying to build a house on a sinking foundation.</p>
+                <span class="label">THE DIAGNOSIS</span>
+                <h2>Why your skin looks <span style="color:var(--gold)">tired</span></h2>
+                <div style="margin-top: 30px;">
+                    <p><strong>✕ Cortisol Spikes:</strong> Stress blocks nocturnal collagen production.</p>
+                    <p><strong>✕ Fluid Stagnation:</strong> The real cause of puffiness and dark circles.</p>
+                    <p><strong>✕ Barrier Burnout:</strong> Why your expensive serums aren't working anymore.</p>
+                </div>
             </div>
             <div class="card">
-                <h3>The "Cortisol Trap"</h3>
-                <p>When high stress and improper light exposure dominate your evenings, your skin stops healing. We show you how to flip the switch and put your cellular repair on autopilot.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-        <div class="container" style="text-align:center">
-            <span class="label">THE BIOLOGICAL SECRET</span>
-            <h2 style="margin-bottom: 40px;">The Deep Glow Protocol™</h2>
-            <div class="grid-2" style="text-align:left">
-                <p>This isn't just "skincare"—it's biological optimization. By syncing your evening routine with your body's peak Growth Hormone release, you stop fighting against your biology and start working with it.</p>
-                <p>This is the "Golden Window" for cellular turnover. Once you learn to leverage it, you can erase the signs of fatigue and premature aging, revealing smoother, tighter skin in as little as 21 days.</p>
-            </div>
-            <div style="margin-top: 60px;">
-                <a href="#offer" class="btn-cta">Access The Protocol</a>
+                <h3>The Rapid Solution</h3>
+                <p>This isn't a long routine. It's a <strong>biological override</strong>. In 5 nights, we realign your internal environment to force your body into "Deep Regeneration Mode."</p>
             </div>
         </div>
     </section>
 
     <section class="section-padding container">
-        <h2 style="text-align:center; margin-bottom: 60px;">What You Get Today</h2>
-        <div class="grid-2">
+        <span class="label" style="text-align: center; display: block;">THE ROADMAP</span>
+        <h2 style="text-align: center; margin-bottom: 60px;">What you'll achieve in 5 Days</h2>
+        
+        <div class="grid-3">
             <div class="card">
-                <span class="label">Module 01</span>
-                <h3>Hormonal Balancing</h3>
-                <p>✔️ <strong>Halt Collagen Loss:</strong> Learn how to suppress the cortisol spikes that break down your skin's elasticity.</p>
-                <p>✔️ <strong>Stop Morning Puffiness:</strong> Wake up looking sculpted, not exhausted.</p>
+                <span class="label">DAY 01</span>
+                <h4>Internal Reset</h4>
+                <p>Clear the physiological noise. Reset hydration and stabilize inflammation to create the conditions for a natural glow.</p>
             </div>
             <div class="card">
-                <span class="label">Module 02</span>
-                <h3>Sleep Environment Engineering</h3>
-                <p>✔️ <strong>Reverse Sleep Lines:</strong> Specific position and pillow hacks to stop facial compression while you snooze.</p>
-                <p>✔️ <strong>Deep Recovery:</strong> Create a bedroom environment that forces your skin to heal overnight.</p>
+                <span class="label">DAY 02</span>
+                <h4>Drain & Refine</h4>
+                <p>Flush out stagnant fluids. Active techniques to reduce swelling and vascular pooling for a lighter, sharper face.</p>
             </div>
             <div class="card">
-                <span class="label">Module 03</span>
-                <h3>The 3-Minute Reset</h3>
-                <p>✔️ <strong>Lymphatic Activation:</strong> A simple morning move to flush fluid and toxins immediately.</p>
-                <p>✔️ <strong>Instant Radiance:</strong> Experience the "lit-from-within" glow before your first cup of coffee.</p>
+                <span class="label">DAY 03</span>
+                <h4>Deep Repair</h4>
+                <p>Shift to tissue repair. Support collagen and strengthen the skin barrier for improved resilience and texture.</p>
             </div>
             <div class="card">
-                <span class="label">Module 04</span>
-                <h3>Biological Shielding</h3>
-                <p>✔️ <strong>Prevent Future Aging:</strong> Build a cellular defense against environmental damage and blue light exposure.</p>
+                <span class="label">DAY 04</span>
+                <h4>Activate Glow</h4>
+                <p>Awaken vascular tone. Strategic circulation boosts to deliver oxygen and nutrients for a vibrant, alive look.</p>
+            </div>
+            <div class="card">
+                <span class="label">DAY 05</span>
+                <h4>Fixation</h4>
+                <p>Turn progress into your new baseline. Refine the habits that worked best to lock in results permanently.</p>
+            </div>
+            <div class="card" style="border-color: var(--gold);">
+                <span class="label">GIFT</span>
+                <h4>Consistency Checklist</h4>
+                <p>Eliminate guesswork. A high-speed accountability tool to track the essentials and prevent regression.</p>
             </div>
         </div>
     </section>
@@ -210,113 +183,72 @@
     <section id="offer" class="offer-wrapper">
         <div class="container">
             <div class="offer-card">
-                <div class="offer-badge">⚠️ SPECIAL ACCESS: 70% OFF FOR NEW MEMBERS</div>
+                <div class="offer-badge">⚠️ FLASH OFFER: 85% DISCOUNT ACTIVE</div>
                 <div class="offer-content">
-                    
-                    <span class="label">GET THE FULL SYSTEM</span>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">The Deep Glow Protocol</h2>
-                    <span class="price-anchor" style="display:block; margin-bottom:20px; color: var(--text-dim);">Stop wasting time and money on ineffective creams. Get the complete blueprint for:</span>
+                    <span class="label">DEEP GLOW RESET™</span>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Unlock Everything Now</h2>
 
                     <ul class="bullets">
-                        <li>The Biological Nighttime Repair Blueprint</li>
-                        <li>Strategic Cortisol & Hormone Control System</li>
-                        <li>Natural Melatonin Optimization Ritual</li>
-                        <li>Facial Decompression & Architecture Methods</li>
-                        <li>Sleep Sanctuary Engineering Guide</li>
-                        <li>The 3-Minute Morning Anti-Puff Protocol</li>
-                        <li>Thermal Contrast & Hydration Technique</li>
+                        <li>The Complete 5-Day Blueprint</li>
+                        <li>Circadian Environment Guide</li>
+                        <li>The Accountability Checklist (Bonus)</li>
+                        <li>Biological Nighttime Repair Ritual</li>
+                        <li>Fluid Drainage & Sculpting Techniques</li>
                     </ul>
 
                     <div style="margin-bottom: 30px;">
-                        <span class="price-old">Normal Price: $98.90</span>
-                        <div class="price-main">$47.90</div>
-                        <p style="color:var(--text-dim); font-size: 13px;">One-time payment. Instant Lifetime Access.</p>
+                        <span class="price-old">Regularly $47.90</span>
+                        <div class="price-main">$7.90</div>
+                        <p style="color:var(--text-dim); font-size: 13px;">ONE-TIME PAYMENT • LIFETIME ACCESS</p>
                     </div>
 
-                    <a href="#" class="btn-cta" style="width: 100%;">Get Instant Access</a>
-                    <div style="text-align: center;">
-                        <a href="#" class="btn-downsell">No thanks, I'll stick to my current routine</a>
-                    </div>
-                    <span class="microcopy">100% Secure Checkout • Instant Delivery</span>
+                    <a href="https://pay.kiwify.com/sRU668G" class="btn-cta" style="width: 100%;">Get Instant Access</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="section-padding container" style="text-align:center">
-        <div style="max-width: 800px; margin: 0 auto; border: 1px solid var(--border); padding: 60px; border-radius: 8px; background: rgba(255,255,255,0.01);">
-            <h2 style="color: var(--gold); margin-bottom: 25px;">The "Radiant Skin" Guarantee</h2>
-            <p style="font-size: 1.1rem;">Try the Deep Glow Protocol for 14 full days. If you don't wake up feeling more revitalized, or if you don't see a visible difference in your skin's texture and glow, just email us for a full refund. No questions, no hassle. I'm taking all the risk for you.</p>
         </div>
     </section>
 
     <section class="faq">
         <div class="container">
-            <h2>Common Questions</h2>
+            <h2>Questions?</h2>
             <div class="faq-container">
                 <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num" style="color: var(--gold)">01.</span> Will this work if I'm over 50?</span>
-                        <span class="faq-icon"></span>
-                    </button>
+                    <button class="faq-question">How soon will I see results?</button>
                     <div class="faq-answer">
-                        <p>Yes. Cellular repair is a fundamental biological process. Whether you are 25 or 65, this protocol optimizes your body’s own natural healing mechanisms to produce visible results.</p>
+                        <p>You will notice a reduction in morning puffiness by Day 2. By Day 5, your skin's texture and natural "glow" will be visibly restored.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num" style="color: var(--gold)">02.</span> Do I need to buy expensive serums?</span>
-                        <span class="faq-icon"></span>
-                    </button>
+                    <button class="faq-question">Do I need to buy products?</button>
                     <div class="faq-answer">
-                        <p>Not at all. The results come from the timing, environment, and techniques we teach you—not the price tag of your skincare products.</p>
+                        <p>No. This protocol relies on biological triggers like timing, temperature, and specific movements. No extra serums required.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num" style="color: var(--gold)">03.</span> How long until I see a change?</span>
-                        <span class="faq-icon"></span>
-                    </button>
+                    <button class="faq-question">Is it a subscription?</button>
                     <div class="faq-answer">
-                        <p>Most members feel a reduction in facial inflammation within 48 hours. The "radiant glow" and visible skin firmness typically become apparent within 14–21 days of consistency.</p>
+                        <p>No. This is a one-time investment for lifetime digital access to the protocol.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num" style="color: var(--gold)">04.</span> Is this methodology safe?</span>
-                        <span class="faq-icon"></span>
-                    </button>
+                    <button class="faq-question">What if it doesn't work?</button>
                     <div class="faq-answer">
-                        <p>Absolutely. It is 100% natural, based on established chronobiology and human physiology. No needles, no aggressive chemicals, and no invasive procedures.</p>
+                        <p>We offer a 7-day money-back guarantee. If you don't feel a difference, we refund your investment immediately.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num" style="color: var(--gold)">05.</span> How do I get access?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Access is instant. Once your payment is processed, you will receive a secure login link to our member portal via email.</p>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align:center; margin-top: 60px;">
-                <a href="#offer" class="btn-cta">I'm Ready. Unlock The Glow.</a>
             </div>
         </div>
     </section>
 
-    <footer class="container">
-        © 2026 DEEP GLOW PROTOCOL ® • THE BIOLOGICAL STANDARD. ALL RIGHTS RESERVED.
+    <footer style="padding: 60px 0; text-align: center; font-size: 10px; color: #333; letter-spacing: 2px;">
+        © 2026 DEEP GLOW PROTOCOL • THE BIOLOGICAL STANDARD.
     </footer>
 
     <script>
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const isOpen = question.classList.contains('active');
-                faqQuestions.forEach(q => q.classList.remove('active'));
-                if (!isOpen) { question.classList.add('active'); }
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                faqItem.classList.toggle('active');
             });
         });
     </script>
