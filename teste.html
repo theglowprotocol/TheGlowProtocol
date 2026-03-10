@@ -3,152 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Deep Glow | The Biological Standard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Deep Glow | 5-Day Reset Protocol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos base mantidos e integrados */
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #030508; color: #ffffff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 80px 0; }
+        .text-center { text-align: center; }
+        .cta { display: inline-block; padding: 15px 30px; background: #fbbf24; color: #000; text-decoration: none; font-weight: 800; border-radius: 5px; margin-bottom: 10px; }
+        
+        #dropletCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: #030508; }
+
+        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+        .module-card { padding: 1.5rem; text-align: left; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); }
+        .benefit-tag { display: inline-block; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-top: 10px; color: #f3f4f6; }
+
+        /* FAQ */
+        .faq-box { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px; }
+        .faq-trigger { width: 100%; background: none; border: none; padding: 20px 0; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; color: #ffffff; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-content p { padding-bottom: 20px; color: #d1d5db; line-height: 1.6; margin: 0; }
+
+        /* Social Proof Styles */
+        .social-proof-container { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 900px; margin: 50px auto; padding: 40px; background-color: #ffffff; border-top: 4px solid #1877f2; box-shadow: 0 10px 30px rgba(0,0,0,0.1); color: #333; }
+        .header-text { text-align: center; margin-bottom: 40px; }
+        .header-text h2 { font-size: 32px; color: #1c1e21; margin-bottom: 10px; }
+        .stars { color: #f5a623; font-size: 20px; margin-bottom: 10px; }
+        .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .card { background: #f7f8fa; padding: 25px; border-radius: 8px; border: 1px solid #dddfe2; }
+        .profile { display: flex; align-items: center; margin-bottom: 15px; }
+        .avatar { width: 45px; height: 45px; background: #333; border-radius: 50%; margin-right: 12px; }
+        .name { font-weight: 700; color: #1c1e21; }
+        .meta { font-size: 12px; color: #606770; }
+        .review-text { font-size: 15px; color: #4b4f56; line-height: 1.6; font-style: italic; }
+        .verified { display: flex; align-items: center; color: #42b72a; font-weight: 600; font-size: 12px; margin-top: 15px; }
+
+        @media (max-width: 768px) { .mobile-stack { display: block !important; } .testimonial-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
 
+    <canvas id="dropletCanvas"></canvas>
+
     <header class="section">
         <div class="container text-center">
-            <p style="color: var(--primary-color); font-weight: 800; text-transform: uppercase; margin-bottom: 10px;">⚠️ LIMITED ENROLLMENT CLOSING SOON</p>
-            <h1>Unlock A Radiant, Youthful Complexion With This Simple 5-Minute Nighttime Hack</h1>
-            <p>You don't need expensive procedures or a dozen serums. By mastering your body's natural nocturnal repair cycle, you can wake up looking refreshed, firm, and years younger.</p>
-            
-            <div class="cta-container">
-                <a href="#offer" class="cta cta-pulse">Start Your Transformation</a>
-                <br>
-                <span class="cta-secondary">Secure Digital Access • Immediate Results</span>
+            <span style="color: #fbbf24; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Biological Protocol • 5-Night Reset</span>
+            <h1 style="color: #ffffff; font-size: 3rem;">Wake Up to Radiant Skin <br> <span style="font-style: italic; font-weight: 400; font-family: serif; color: #ffffff;">Results in 5 Days.</span></h1>
+            <p style="margin: 0 auto; max-width: 600px; color: #e5e7eb; font-size: 1.2rem;">Stop fighting your biology. A simple, science-based protocol to neutralize stress and trigger deep cellular repair while you sleep. Fast to apply, impossible to ignore.</p>
+            <div class="cta-container" style="margin-top: 30px;">
+                <a href="#offer" class="cta">Start My 5-Day Reset</a>
+                <div style="color: #9ca3af; font-size: 0.9rem;">Instant Access • Results by Day 2</div>
             </div>
         </div>
     </header>
 
-    <section class="section highlight">
-        <div class="container">
-            <div class="box">
-                <p style="font-size: 0.8rem; font-weight: 800; color: var(--primary-color); text-transform: uppercase; margin-bottom: 10px;">THE HIDDEN PROBLEM</p>
-                <h2>Why Your Current Skincare Routine Is Working Against You.</h2>
-                <p>You're likely wasting hundreds of dollars on products that can't penetrate your skin's surface. If your body's internal clock and stress hormones are out of balance, your skin physically cannot regenerate. You're trying to build a house on a sinking foundation.</p>
-                <div style="background: var(--accent-soft); padding: 20px; border-radius: 12px; margin-top: 20px;">
-                    <p style="color: var(--text-main); font-weight: 700; margin-bottom: 10px;">The "Cortisol Trap"</p>
-                    <p style="margin-bottom: 0;">When high stress and improper light exposure dominate your evenings, your skin stops healing. We show you how to flip the switch and put your cellular repair on autopilot.</p>
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="box" style="border: 1px dashed rgba(255,255,255,0.1); padding: 2rem; background: rgba(0,0,0,0.3);">
+                    <div style="display: flex; gap: 40px; align-items: center;" class="mobile-stack">
+                        <div style="flex: 1.2;">
+                            <span style="color: #fbbf24; text-transform: uppercase; font-size: 0.8rem; font-weight: 700;">The Diagnosis</span>
+                            <h2 style="color: #ffffff; margin-top: 10px;">Why your skin looks <span style="color: #fbbf24;">tired</span></h2>
+                            <div style="margin-top: 25px;">
+                                <p style="font-size: 1rem; margin-bottom: 15px; color: #e5e7eb;"><strong>✕ Cortisol Spikes:</strong> Stress blocks nocturnal collagen production.</p>
+                                <p style="font-size: 1rem; margin-bottom: 15px; color: #e5e7eb;"><strong>✕ Fluid Stagnation:</strong> The real cause of puffiness and dark circles.</p>
+                                <p style="font-size: 1rem; color: #e5e7eb;"><strong>✕ Barrier Burnout:</strong> Why your expensive serums aren't working anymore.</p>
+                            </div>
+                        </div>
+                        <div class="box" style="background: rgba(255,255,255,0.05); padding: 2rem; flex: 0.8;">
+                            <h3 style="color: #fbbf24; font-size: 1.25rem; margin-bottom: 1rem;">The Rapid Solution</h3>
+                            <p style="font-size: 0.95rem; color: #d1d5db;">This isn't a long routine. It's a <strong>biological override</strong>. In 5 nights, we realign your internal environment to force your body into "Deep Regeneration Mode."</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div style="margin-top: 60px; text-align: center;">
-                <p style="font-size: 0.8rem; font-weight: 800; color: var(--primary-color); text-transform: uppercase; margin-bottom: 10px;">THE BIOLOGICAL SECRET</p>
-                <h2>The Deep Glow Protocol™</h2>
-                <p>This isn't just "skincare"—it's biological optimization. By syncing your evening routine with your body's peak Growth Hormone release, you stop fighting against your biology and start working with it.</p>
-                <p><strong>This is the "Golden Window" for cellular turnover. Once you learn to leverage it, you can erase the signs of fatigue and premature aging, revealing smoother, tighter skin in as little as 21 days.</strong></p>
-                <div class="cta-container">
-                    <a href="#offer" class="cta">Access The Protocol</a>
+        <section class="section" style="background: rgba(0,0,0,0.2);">
+            <div class="container text-center">
+                <span style="color: #fbbf24; text-transform: uppercase; font-size: 0.8rem; font-weight: 700;">The Roadmap</span>
+                <h2 style="color: #ffffff;">What you'll achieve in 5 Days</h2>
+                <div class="module-grid">
+                    <div class="box module-card">
+                        <span style="color: #fbbf24; font-weight: 800; font-size: 0.75rem;">DAY 01</span>
+                        <h4>Internal Reset</h4>
+                        <p>Clear the physiological noise. Reset hydration and stabilize inflammation to create the conditions for a natural glow.</p>
+                        <span class="benefit-tag">Focus: Reduce Stress</span>
+                    </div>
+                    <div class="box module-card">
+                        <span style="color: #fbbf24; font-weight: 800; font-size: 0.75rem;">DAY 02</span>
+                        <h4>Drain & Refine</h4>
+                        <p>Flush out stagnant fluids. Active techniques to reduce swelling and vascular pooling for a lighter, sharper face.</p>
+                        <span class="benefit-tag">Focus: Visible De-bloat</span>
+                    </div>
+                    <div class="box module-card">
+                        <span style="color: #fbbf24; font-weight: 800; font-size: 0.75rem;">DAY 03</span>
+                        <h4>Deep Repair</h4>
+                        <p>Shift to tissue repair. Support collagen and strengthen the skin barrier for improved resilience and texture.</p>
+                        <span class="benefit-tag">Focus: Structural Support</span>
+                    </div>
+                    <div class="box module-card">
+                        <span style="color: #fbbf24; font-weight: 800; font-size: 0.75rem;">DAY 04</span>
+                        <h4>Activate Glow</h4>
+                        <p>Awaken vascular tone. Strategic circulation boosts to deliver oxygen and nutrients for a vibrant, alive look.</p>
+                        <span class="benefit-tag">Focus: Radiance Boost</span>
+                    </div>
+                    <div class="box module-card">
+                        <span style="color: #fbbf24; font-weight: 800; font-size: 0.75rem;">DAY 05</span>
+                        <h4>Fixation</h4>
+                        <p>Turn progress into your new baseline. Refine the habits that worked best to lock in results permanently.</p>
+                        <span class="benefit-tag">Focus: Repeatable Results</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>What You Get Today</h2>
-            <div class="module-grid">
-                <div class="module-card">
-                    <h3>Hormonal Balancing</h3>
-                    <p><strong>Halt Collagen Loss:</strong> Learn how to suppress the cortisol spikes that break down your skin's elasticity.</p>
-                    <p><strong>Stop Morning Puffiness:</strong> Wake up looking sculpted, not exhausted.</p>
+        <section class="social-proof-container">
+            <div class="header-text">
+                <h2>Don't just take our word for it</h2>
+                <div class="stars">★★★★★</div>
+                <p>Rated 4.9/5 based on over 1,200+ customer reviews.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="card">
+                    <div class="profile">
+                        <div class="avatar" style="background: #5890ff;"></div>
+                        <div><div class="name">Sarah Jenkins</div><div class="meta">Verified Buyer • Texas</div></div>
+                    </div>
+                    <div class="review-text">"I was skeptical at first, but after one week of use, I'm absolutely blown away. This is exactly what I needed to solve my problem. Fast shipping, too!"</div>
+                    <div class="verified">✓ Verified Purchase</div>
                 </div>
-                <div class="module-card">
-                    <h3>Sleep Environment Engineering</h3>
-                    <p><strong>Reverse Sleep Lines:</strong> Specific position and pillow hacks to stop facial compression while you snooze.</p>
-                    <p><strong>Deep Recovery:</strong> Create a bedroom environment that forces your skin to heal overnight.</p>
-                </div>
-                <div class="module-card">
-                    <h3>The 3-Minute Reset</h3>
-                    <p><strong>Lymphatic Activation:</strong> A simple morning move to flush fluid and toxins immediately.</p>
-                    <p><strong>Instant Radiance:</strong> Experience the "lit-from-within" glow before your first cup of coffee.</p>
-                </div>
-                <div class="module-card">
-                    <h3>Biological Shielding</h3>
-                    <p><strong>Prevent Future Aging:</strong> Build a cellular defense against environmental damage and blue light exposure.</p>
+                <div class="card">
+                    <div class="profile">
+                        <div class="avatar" style="background: #ff5858;"></div>
+                        <div><div class="name">Mark Thompson</div><div class="meta">Verified Buyer • California</div></div>
+                    </div>
+                    <div class="review-text">"Premium quality. You can tell they put a lot of thought into the design and durability. I’ve already recommended this to my entire team."</div>
+                    <div class="verified">✓ Verified Purchase</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="offer" class="section highlight">
-        <div class="container">
-            <div class="box">
-                <p style="text-align: center; color: var(--primary-color); font-weight: 800;">⚠️ SPECIAL ACCESS: 70% OFF FOR NEW MEMBERS</p>
-                <h2 style="margin-top: 10px;">The Deep Glow Protocol</h2>
-                <ul style="list-style: none; margin: 20px 0; color: var(--text-light);">
-                    <li style="margin-bottom: 10px;">✓ The Biological Nighttime Repair Blueprint</li>
-                    <li style="margin-bottom: 10px;">✓ Strategic Cortisol & Hormone Control System</li>
-                    <li style="margin-bottom: 10px;">✓ Natural Melatonin Optimization Ritual</li>
-                    <li style="margin-bottom: 10px;">✓ Facial Decompression & Architecture Methods</li>
-                    <li style="margin-bottom: 10px;">✓ Sleep Sanctuary Engineering Guide</li>
-                    <li style="margin-bottom: 10px;">✓ The 3-Minute Morning Anti-Puff Protocol</li>
-                    <li style="margin-bottom: 10px;">✓ Thermal Contrast & Hydration Technique</li>
-                </ul>
-                <div style="text-align: center; margin: 30px 0;">
-                    <p style="text-decoration: line-through; margin-bottom: 5px;">Normal Price: $98.90</p>
-                    <h2 style="font-size: 3.5rem;">$47.90</h2>
-                    <p style="font-size: 0.9rem; color: var(--text-light);">One-time payment. Instant Lifetime Access.</p>
-                </div>
-                <div class="cta-container">
-                    <a href="#" class="cta">Get Instant Access</a>
-                    <br>
-                    <button class="cta-secondary">No thanks, I'll stick to my current routine</button>
+        <section id="offer" class="section">
+            <div class="container">
+                <div class="box" style="max-width: 900px; margin: 0 auto; padding: 0; overflow: hidden; border: 2px solid #fbbf24; background: rgba(255,255,255,0.05);">
+                    <div style="background: #fbbf24; color: #000; padding: 15px; text-align: center; font-weight: 800;">⚠️ FLASH OFFER: 85% DISCOUNT ACTIVE</div>
+                    <div style="display: flex;" class="mobile-stack">
+                        <div style="padding: 40px; flex: 1;">
+                            <h3 style="font-size: 1.8rem;">Deep Glow Reset™</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 10px;">✓ The Complete 5-Day Blueprint</li>
+                                <li style="margin-bottom: 10px;">✓ Circadian Environment Guide</li>
+                                <li style="margin-bottom: 10px;"><strong>✓ Bonus:</strong> The Accountability Checklist</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 40px; text-align: center; border-left: 1px solid rgba(255,255,255,0.1); flex: 1;">
+                            <span style="text-decoration: line-through; color: #9ca3af;">Regularly $47.90</span>
+                            <div style="font-size: 3rem; font-weight: 800; margin: 10px 0;">$7.90</div>
+                            <a href="https://pay.hotmart.com/W104754654M?bid=1772998700626" class="cta" style="width: 100%;">Unlock Everything Now</a>
+                            <p style="font-size: 0.7rem; color: #9ca3af; margin-top: 10px;">7-Day Money Back Guarantee</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="box">
-                <h2>The "Radiant Skin" Guarantee</h2>
-                <p>Try the Deep Glow Protocol for 14 full days. If you don't wake up feeling more revitalized, or if you don't see a visible difference in your skin's texture and glow, just email us for a full refund. No questions, no hassle. I'm taking all the risk for you.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section highlight">
-        <div class="container">
-            <h2>Common Questions</h2>
-            <div class="faq-box" style="margin-top: 40px;">
+        <section class="section">
+            <div class="faq-box">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Questions?</h2>
                 <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">Will this work if I'm over 50? <span>+</span></button>
-                    <div class="faq-content"><p>Yes. Cellular repair is a fundamental biological process. Whether you are 25 or 65, this protocol optimizes your body’s own natural healing mechanisms to produce visible results.</p></div>
+                    <button class="faq-trigger" onclick="toggleFaq(this)">How soon will I see results? <span>+</span></button>
+                    <div class="faq-content"><p>You will notice a reduction in morning puffiness by Day 2. By Day 5, your skin's texture and natural "glow" will be visibly restored.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">Do I need to buy expensive serums? <span>+</span></button>
-                    <div class="faq-content"><p>Not at all. The results come from the timing, environment, and techniques we teach you—not the price tag of your skincare products.</p></div>
+                    <button class="faq-trigger" onclick="toggleFaq(this)">Do I need to buy products? <span>+</span></button>
+                    <div class="faq-content"><p>No. This protocol relies on biological triggers. No extra serums required.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">How long until I see a change? <span>+</span></button>
-                    <div class="faq-content"><p>Most members feel a reduction in facial inflammation within 48 hours. The "radiant glow" and visible skin firmness typically become apparent within 14–21 days of consistency.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">Is this methodology safe? <span>+</span></button>
-                    <div class="faq-content"><p>Absolutely. It is 100% natural, based on established chronobiology and human physiology. No needles, no aggressive chemicals, and no invasive procedures.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)">How do I get access? <span>+</span></button>
-                    <div class="faq-content"><p>Access is instant. Once your payment is processed, you will receive a secure login link to our member portal via email.</p></div>
+                    <button class="faq-trigger" onclick="toggleFaq(this)">What if it doesn't work? <span>+</span></button>
+                    <div class="faq-content"><p>We offer a 7-day money-back guarantee. If you don't feel a difference, we refund your $7.90 immediately.</p></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <footer class="section text-center">
-        <p style="font-size: 0.8rem;">© 2026 DEEP GLOW PROTOCOL ® • THE BIOLOGICAL STANDARD. ALL RIGHTS RESERVED.</p>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://pay.hotmart.com/W104754654M?bid=1772998700626" class="cta">Get Started Now</a>
+            </div>
+        </section>
+    </main>
+        
+    <footer style="text-align: center; padding: 20px; color: #9ca3af; font-size: 0.8rem;">
+        © 2026 DEEP GLOW PROTOCOL • THE BIOLOGICAL STANDARD
     </footer>
 
     <script>
+        // Animação de Fundo
+        const canvas = document.getElementById('dropletCanvas');
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        resizeCanvas();
+        let droplets = [];
+        class Droplet {
+            constructor() { this.init(); }
+            init() { this.y = Math.random() * canvas.height; this.x = Math.random() * canvas.width; this.speed = Math.random() * 0.3 + 0.1; }
+            draw() { ctx.fillStyle = 'rgba(255,255,255,0.05)'; ctx.beginPath(); ctx.arc(this.x, this.y, 1, 0, Math.PI*2); ctx.fill(); }
+            update() { this.y += this.speed; if(this.y > canvas.height) this.y = 0; this.draw(); }
+        }
+        for(let i=0; i<100; i++) droplets.push(new Droplet());
+        function animate() { ctx.clearRect(0,0, canvas.width, canvas.height); droplets.forEach(d => d.update()); requestAnimationFrame(animate); }
+        animate();
+
         function toggleFaq(btn) {
             const content = btn.nextElementSibling;
-            const isOpen = content.style.maxHeight;
-            document.querySelectorAll('.faq-content').forEach(c => c.style.maxHeight = null);
-            content.style.maxHeight = (isOpen && isOpen !== "0px") ? null : content.scrollHeight + "px";
+            content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
         }
     </script>
 </body>
