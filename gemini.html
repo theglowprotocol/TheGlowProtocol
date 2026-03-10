@@ -3,184 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Vendas Vencedora</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Protocolo do Sono | A Ciência do Descanso Profundo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #001f3f;
-            --accent: #ff8c00;
-            --text: #333;
-            --light: #f4f7f6;
-            --white: #ffffff;
+            --bg-deep: #050a18;
+            --accent-gold: #c5a059;
+            --accent-blue: #3a7bd5;
+            --text-light: #e0e0e0;
+            --card-bg: rgba(255, 255, 255, 0.05);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); background-color: var(--white); }
-        
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 80px 0; }
-        h1, h2, h3 { line-height: 1.2; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--bg-deep); 
+            color: var(--text-light); 
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Fundo com Gotículas Flutuantes (Canvas) */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #0a192f 0%, #050a18 100%);
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; position: relative; }
         .center { text-align: center; }
 
-        /* 1. Headline & 2. Subheadline */
-        header { background: var(--primary); color: var(--white); padding: 100px 0 60px; text-align: center; }
-        h1 { font-size: 3rem; font-weight: 900; margin-bottom: 20px; }
-        .subheadline { font-size: 1.4rem; color: #ccc; max-width: 800px; margin: 0 auto; }
+        /* 1 & 2. Headlines */
+        header { padding: 120px 0 60px; text-align: center; }
+        .headline { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900; color: #fff; margin-bottom: 25px; text-transform: uppercase; letter-spacing: -1px; }
+        .headline span { color: var(--accent-gold); }
+        .subheadline { font-size: 1.3rem; color: #a0a0a0; max-width: 800px; margin: 0 auto; font-weight: 300; }
 
-        /* 3. Quebra de Padrão & 4. Agitação */
-        .pain-section { background: var(--light); }
-        .pain-point { background: #fff; padding: 30px; border-radius: 10px; margin-top: 20px; border-left: 5px solid red; }
+        /* 3 & 4. Agitação do Problema */
+        .pain-box { background: rgba(255, 0, 0, 0.05); border: 1px solid rgba(255, 0, 0, 0.2); padding: 40px; border-radius: 20px; margin: 40px 0; }
+        .pain-box h3 { color: #ff5f5f; margin-bottom: 15px; }
 
-        /* 5. Apresentação & 6. O que vai receber */
-        .solution-section { background: var(--white); }
-        .grid-modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
-        .module-card { padding: 25px; border: 1px solid #ddd; border-radius: 8px; }
-
-        /* 8. Prova/Autoridade */
-        .authority { background: var(--primary); color: white; }
-        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
-        .stat-item h3 { font-size: 2.5rem; color: var(--accent); }
-
-        /* 9. Bônus */
-        .bonus-card { background: #fff9e6; border: 2px dashed var(--accent); padding: 20px; margin: 15px 0; border-radius: 10px; }
-
-        /* 10. Oferta & 12. CTA */
-        .offer-box { border: 3px solid var(--primary); padding: 50px; border-radius: 20px; text-align: center; margin-top: 40px; }
-        .old-price { text-decoration: line-through; color: #888; font-size: 1.2rem; }
-        .new-price { font-size: 4rem; font-weight: 900; color: var(--primary); display: block; }
-        .cta-button { 
-            display: inline-block; background: var(--accent); color: white; padding: 25px 50px; 
-            font-size: 1.8rem; font-weight: bold; text-decoration: none; border-radius: 50px; 
-            margin-top: 20px; transition: transform 0.2s; box-shadow: 0 10px 20px rgba(255,140,0,0.3);
+        /* Botão CTA Premium */
+        .cta-main { 
+            display: inline-block; 
+            background: linear-gradient(135deg, #c5a059 0%, #947a43 100%); 
+            color: #000; 
+            padding: 22px 50px; 
+            font-size: 1.4rem; 
+            font-weight: 700; 
+            text-decoration: none; 
+            border-radius: 10px; 
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+            transition: 0.3s;
+            text-transform: uppercase;
         }
-        .cta-button:hover { transform: scale(1.05); }
+        .cta-main:hover { transform: translateY(-5px); box-shadow: 0 0 50px rgba(197, 160, 89, 0.6); }
 
-        /* 13. FAQ */
-        .faq-item { margin-bottom: 20px; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto; }
-        details { padding: 15px; background: var(--light); border-radius: 5px; cursor: pointer; }
-        summary { font-weight: bold; }
+        /* 6. Módulos */
+        .grid-modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 50px; }
+        .module-card { background: var(--card-bg); padding: 30px; border-radius: 15px; border-top: 3px solid var(--accent-gold); }
+
+        /* Prova Social Estilo Facebook (Solicitado) */
+        .social-proof-container {
+            background-color: #ffffff;
+            border-top: 4px solid #1877f2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            color: #1c1e21;
+            border-radius: 10px;
+            padding: 40px;
+            margin: 60px 0;
+        }
+        .header-text h2 { font-size: 28px; font-weight: 700; margin-bottom: 5px; }
+        .stars { color: #f5a623; font-size: 18px; margin-bottom: 20px; }
+        .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
+        .card-fb { background: #f0f2f5; padding: 20px; border-radius: 12px; }
+        .profile { display: flex; align-items: center; margin-bottom: 12px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; background: #ccc; }
+        .name { font-weight: 700; font-size: 14px; }
+        .review-text { font-size: 14px; color: #4b4f56; font-style: normal; }
+
+        /* FAQ */
+        details { background: var(--card-bg); margin-bottom: 10px; padding: 20px; border-radius: 10px; cursor: pointer; }
+        summary { font-weight: 700; font-size: 1.1rem; }
+
+        /* Garantia */
+        .guarantee-badge { max-width: 150px; margin-bottom: 20px; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .stat-grid { grid-template-columns: 1fr; }
+            .testimonial-grid { grid-template-columns: 1fr; }
+            .headline { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <h1>Saia do Zero e Fature seus Primeiros R$ 10.000,00 por Mês com Liberdade Geográfica</h1>
-            <p class="subheadline">O método validado para transformar seu conhecimento em um negócio digital lucrativo, mesmo que você não saiba por onde começar.</p>
-        </div>
+    <div id="particles-js"></div>
+
+    <header class="container">
+        <h1 class="headline">REPROGRAME SEU CÉREBRO PARA O <span>DESCANSO ELITE</span> EM 7 NOITES</h1>
+        <p class="subheadline">Descubra o protocolo científico usado por CEOs e Atletas de alto rendimento para silenciar a ansiedade noturna e acordar com energia inesgotável.</p>
+        <br><br>
+        <a href="#oferta" class="cta-main">Sim, eu quero dormir melhor</a>
     </header>
 
-    <section class="pain-section">
-        <div class="container">
-            <h2 class="center">Você sente que está apenas "trocando tempo por dinheiro"?</h2>
-            <div class="pain-point">
-                <p><strong>A verdade dói:</strong> A maioria das pessoas passa a vida trabalhando para construir o sonho de outra pessoa, enquanto vê o tempo passar e a conta bancária estagnada. Você estuda, tenta, mas parece que falta uma peça do quebra-cabeça.</p>
-            </div>
-            <div class="pain-point" style="border-color: #ff8c00;">
-                <p>Cada dia que você adia sua entrada no digital, você está perdendo a chance de estar com sua família e de ter a liberdade que sempre quis. O mercado não espera.</p>
-            </div>
+    <section class="container">
+        <div class="center">
+            <h2>Por que 97% das pessoas acordam cansadas?</h2>
+            <p>Não é falta de café, é falha no protocolo biológico.</p>
+        </div>
+        <div class="pain-box">
+            <p>Você deita, mas sua mente não desliga. As horas passam, o celular brilha e o amanhã parece um fardo. A falta de sono profundo está destruindo seus neurônios, seu metabolismo e seu foco. Você está vivendo no "modo sobrevivência".</p>
         </div>
     </section>
 
-    <section class="solution-section">
-        <div class="container">
-            <h2 class="center">Apresentamos o Método: ESCALA TOTAL</h2>
-            <p class="center">Um passo a passo completo, do iniciante ao avançado.</p>
-            
-            <div class="grid-modules">
-                <div class="module-card">
-                    <h3>Módulo 01</h3>
-                    <p>Mentalidade Empreendedora e Blindagem de Foco.</p>
+    <section class="container">
+        <div class="social-proof-container">
+            <div class="header-text center">
+                <h2>Resultados Reais de Alunos</h2>
+                <div class="stars">★★★★★</div>
+                <p>Média de 4.9/5 baseada em 2.450+ protocolos finalizados.</p>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="card-fb">
+                    <div class="profile">
+                        <div class="avatar" style="background: url('https://i.pravatar.cc/100?u=1') center/cover;"></div>
+                        <div><div class="name">Ricardo Almeida</div><div style="font-size:11px">São Paulo - SP</div></div>
+                    </div>
+                    <p class="review-text">"Passei 10 anos tomando remédios. Com o Protocolo, em 15 dias, parei com tudo e hoje acordo antes do despertador com uma disposição que não tinha aos 20 anos."</p>
                 </div>
-                <div class="module-card">
-                    <h3>Módulo 02</h3>
-                    <p>Escolha de Nicho Lucrativo e Oferta Irresistível.</p>
-                </div>
-                <div class="module-card">
-                    <h3>Módulo 03</h3>
-                    <p>Tráfego Pago: Como investir R$ 10 e retornar R$ 50.</p>
-                </div>
-                <div class="module-card">
-                    <h3>Módulo 04</h3>
-                    <p>Copywriting de Elite para Vendas Automáticas.</p>
+                <div class="card-fb">
+                    <div class="profile">
+                        <div class="avatar" style="background: url('https://i.pravatar.cc/100?u=2') center/cover;"></div>
+                        <div><div class="name">Juliana Fontes</div><div style="font-size:11px">Curitiba - PR</div></div>
+                    </div>
+                    <p class="review-text">"O segredo da temperatura e da luz mudou meu jogo. Incrível como detalhes que a gente ignora fazem toda a diferença no sono profundo."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="authority">
-        <div class="container center">
-            <h2>Por que confiar em nós?</h2>
-            <p>Já ajudamos mais de 1.500 alunos a mudarem de vida nos últimos 12 meses.</p>
-            <div class="stat-grid">
-                <div class="stat-item"><h3>+5M</h3><p>Faturados por alunos</p></div>
-                <div class="stat-item"><h3>100%</h3><p>Online e Flexível</p></div>
-                <div class="stat-item"><h3>24h</h3><p>Suporte Especializado</p></div>
+    <section class="container">
+        <h2 class="center">O que você vai dominar no Protocolo:</h2>
+        <div class="grid-modules">
+            <div class="module-card">
+                <h3>Fase 01: O Desligue</h3>
+                <p>Como baixar o cortisol em 12 minutos usando técnicas de respiração tática.</p>
+            </div>
+            <div class="module-card">
+                <h3>Fase 02: Arquitetura do Quarto</h3>
+                <p>O guia definitivo de iluminação e temperatura para indução da melatonina natural.</p>
+            </div>
+            <div class="module-card">
+                <h3>Fase 03: Suplementação Bio-Hacker</h3>
+                <p>O que a indústria não te conta sobre magnésio e ervas ancestrais.</p>
             </div>
         </div>
     </section>
 
-    <section>
-        <div class="container">
-            <h2 class="center">Ao se inscrever hoje, você leva esses Bônus Exclusivos:</h2>
-            <div class="bonus-card">
-                <strong>BÔNUS 1:</strong> Comunidade VIP no Discord para Networking (R$ 497,00 - GRÁTIS)
-            </div>
-            <div class="bonus-card">
-                <strong>BÔNUS 2:</strong> Planilha de Gestão de Tráfego e ROI (R$ 197,00 - GRÁTIS)
-            </div>
-        </div>
+    <section class="container center" style="background: rgba(197, 160, 89, 0.1); border-radius: 30px; padding: 50px;">
+        <h2 style="color: var(--accent-gold)">BÔNUS EXCLUSIVOS HOJE:</h2>
+        <p>1. Guia Anti-Jetlag (R$ 97) - <strong>GRÁTIS</strong></p>
+        <p>2. Playlist de Frequências Solfeggio (R$ 147) - <strong>GRÁTIS</strong></p>
     </section>
 
-    <section style="background: var(--light);">
-        <div class="container">
-            <div class="offer-box">
-                <h2>Aproveite a Condição Especial</h2>
-                <p>De <span class="old-price">R$ 997,00</span> por apenas:</p>
-                <span class="new-price">12x R$ 49,70</span>
-                <p>ou R$ 497,00 à vista</p>
-                
-                <a href="#" class="cta-button">QUERO ACESSAR AGORA!</a>
-                
-                <p style="margin-top: 20px;">
-                    <strong>🛡️ GARANTIA INCONDICIONAL DE 7 DIAS:</strong><br>
-                    Se você não gostar do conteúdo, devolvemos 100% do seu dinheiro. Sem perguntas.
-                </p>
-            </div>
+    <section id="oferta" class="container center">
+        <h2 class="headline">Assuma o controle do seu descanso</h2>
+        <div style="margin: 30px 0;">
+            <p style="text-decoration: line-through; opacity: 0.5;">De R$ 497,00 por apenas</p>
+            <p style="font-size: 3.5rem; font-weight: 900; color: var(--accent-gold);">12x R$ 19,70</p>
+            <p>Ou R$ 197,00 à vista no PIX</p>
         </div>
+
+        <img src="https://cdn-icons-png.flaticon.com/512/3588/3588145.png" alt="Garantia" class="guarantee-badge"><br>
+        <p><strong>Garantia Blindada:</strong> 15 dias para testar ou seu dinheiro de volta.</p>
+        <br>
+        <a href="#" class="cta-main">Quero Acessar Agora</a>
     </section>
 
-    <section>
-        <div class="container">
-            <h2 class="center">Dúvidas Frequentes</h2>
-            <br>
-            <div class="faq-item">
-                <details>
-                    <summary>Preciso de experiência prévia?</summary>
-                    <p>Não! O curso foi desenhado para quem está começando do absoluto zero.</p>
-                </details>
-            </div>
-            <div class="faq-item">
-                <details>
-                    <summary>Por quanto tempo terei acesso?</summary>
-                    <p>O acesso é vitalício! Você pode assistir no seu ritmo, para sempre.</p>
-                </details>
-            </div>
-        </div>
+    <section class="container">
+        <h2 class="center">Perguntas Frequentes</h2>
+        <br>
+        <details>
+            <summary>Funciona para quem tem insônia crônica?</summary>
+            <p style="padding-top:10px">Sim. O protocolo foca na biologia básica do corpo humano, corrigindo os sinais hormonais que o seu cérebro parou de receber.</p>
+        </details>
+        <details>
+            <summary>Preciso comprar equipamentos caros?</summary>
+            <p style="padding-top:10px">Absolutamente não. 90% do protocolo envolve ajustes de hábitos e ambiente com o que você já tem em casa.</p>
+        </details>
     </section>
 
-    <footer style="background: var(--primary); color: white; padding: 60px 0; text-align: center;">
-        <div class="container">
-            <h2>Última chance de mudar o seu 2026!</h2>
-            <p>As vagas com este desconto expiram em breve.</p>
-            <a href="#" class="cta-button" style="background: #25d366;">GARANTIR MINHA VAGA AGORA</a>
-        </div>
-    </footer>
-
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.2, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 1, "direction": "bottom", "random": true, "straight": false, "out_mode": "out" }
+            },
+            "interactivity": { "events": { "onhover": { "enable": true, "mode": "repulse" } } }
+        });
+    </script>
 </body>
 </html>
