@@ -6,130 +6,137 @@
     <title>Glow Reset – 5 Day Skin Recovery Plan</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #fbbf24; --bg: #030508; --text: #ffffff; --card-bg: rgba(255,255,255,0.02); }
-        body { margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        .section { padding: 60px 20px; }
-        .box { border: 1px solid rgba(255,255,255,0.1); padding: 2rem; background: var(--card-bg); border-radius: 16px; }
-        .cta { display: inline-block; background: var(--primary); color: #000; padding: 15px 30px; border-radius: 50px; font-weight: 800; text-decoration: none; text-transform: uppercase; margin-top: 20px; transition: 0.3s; }
+        /* Estilos Base e Design */
+        body { margin: 0; font-family: 'Inter', sans-serif; background-color: #030508; color: #ffffff; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 60px 0; }
+        .text-center { text-align: center; }
+        .cta { display: inline-block; background: #fbbf24; color: #000; padding: 18px 35px; border-radius: 50px; font-weight: 800; text-decoration: none; font-size: 1.1rem; transition: transform 0.2s; }
+        .cta:hover { transform: scale(1.05); }
         
         #dropletCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .alert-bar { background: #991b1b; color: #fff; text-align: center; padding: 10px; font-size: 0.8rem; font-weight: 600; }
-        
-        /* Carrossel */
-        .carousel-container { position: relative; overflow: hidden; margin: 40px 0; perspective: 1000px; }
-        .carousel-track { display: flex; transition: transform 0.5s ease; cursor: grab; }
-        .testimonial-card { min-width: 300px; margin: 0 10px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 16px; transition: 0.5s; opacity: 0.5; filter: blur(2px); transform: scale(0.9); }
-        .testimonial-card.active { opacity: 1; filter: blur(0); transform: scale(1); }
 
-        .faq-trigger { width: 100%; background: none; border: none; padding: 20px 0; color: #fff; text-align: left; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; }
-        .faq-content { max-height: 0; overflow: hidden; transition: 0.3s; }
-        @media (max-width: 768px) { .mobile-stack { display: block !important; } }
+        /* Top Alert Bar */
+        .top-alert { background: #fbbf24; color: #000; padding: 10px; text-align: center; font-weight: 800; font-size: 0.85rem; }
+
+        /* Módulos e Cards */
+        .box { border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); padding: 2rem; }
+        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+        .module-card { padding: 1.5rem; }
+        
+        /* FAQ Styles */
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px; }
+        .faq-trigger { width: 100%; background: none; border: none; padding: 20px 0; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #ffffff; font-weight: 600; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-content p { padding-bottom: 20px; color: #d1d5db; }
+
+        @media (max-width: 768px) { h1 { font-size: 2rem !important; } }
     </style>
 </head>
 <body>
+
     <canvas id="dropletCanvas"></canvas>
 
-    <div class="alert-bar">⚠️ LIMITED ACCESS NOTICE: Access to Glow Reset may close at any moment.</div>
+    <div class="top-alert">⚠️ LIMITED ACCESS NOTICE: Due to high demand, access to the Glow Reset – 5 Day Skin Recovery Plan may close at any moment.</div>
 
-    <header class="section text-center">
-        <div class="container">
-            <h1 style="font-family: 'Plus Jakarta Sans'; font-size: 2.5rem;">Restore a Brighter, Less Puffy, More Rested Face in Just 5 Days</h1>
-            <p>A simple step-by-step recovery plan designed to help reduce puffiness, support healthy circulation, and bring back your natural glow.</p>
-            <div id="timer" style="margin: 20px 0; font-size: 2rem; font-weight: 800; color: var(--primary);">00:48:57</div>
-            <a href="#offer" class="cta" id="cta-link">Start My Glow Reset Now</a>
+    <header class="section">
+        <div class="container text-center">
+            <h1 style="font-family: 'Plus Jakarta Sans'; font-size: 3rem; line-height: 1.1;">Restore a Brighter, Less Puffy, More Rested Face in Just 5 Days</h1>
+            <p style="font-size: 1.2rem; color: #e5e7eb; max-width: 700px; margin: 20px auto;">A simple step-by-step recovery plan designed to help reduce puffiness, support healthy circulation, and bring back your natural glow.</p>
+            <div id="timer" style="margin: 30px 0; font-size: 1.5rem; font-weight: 800;">
+                <span id="h">00</span> HOURS : <span id="m">48</span> MINUTES : <span id="s">57</span> SECONDS
+            </div>
+            <a href="#offer" class="cta" onclick="document.getElementById('offer').scrollIntoView({behavior: 'smooth'})">Start My Glow Reset Now</a>
         </div>
     </header>
 
-    <section class="container">
-        <h2>Why You Still Look Tired — Even After Trying Skincare</h2>
-        <p>Most people try to fix the surface, while puffiness often begins with internal imbalances.</p>
-        <ul>
-            <li>Puffy under-eyes in the morning</li>
-            <li>Darker looking eye areas</li>
-            <li>A tired appearance even after sleep</li>
-            <li>Skin that looks dull or swollen</li>
-        </ul>
-    </section>
+    <main>
+        <section class="section container">
+            <h2 style="text-align: center;">Why You Still Look Tired — Even After Trying Skincare</h2>
+            <p>If you’ve tried eye creams, patches, or expensive skincare routines but still wake up looking tired, you’re not alone. Most people try to fix the surface, while puffiness and dull skin often begin with internal imbalances.</p>
+        </section>
 
-    <section class="container">
-        <h2>Introducing Glow Reset – 5 Day Skin Recovery Plan</h2>
-        <p>Glow Reset focuses on internal conditions: hydration balance, fluid movement, circulation support, and overnight recovery.</p>
-        
-        <h3>Inside The 5-Day Glow Reset</h3>
-        <div style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-            <div class="box"><h4>Day 1: Internal Reset</h4></div>
-            <div class="box"><h4>Day 2: Circulation & Fluid Movement</h4></div>
-            <div class="box"><h4>Day 3: Repair & Skin Support</h4></div>
-            <div class="box"><h4>Day 4: Circulation Activation</h4></div>
-            <div class="box"><h4>Day 5: Stabilization</h4></div>
-        </div>
-    </section>
-
-    <section class="container">
-        <h2>What Participants Are Saying</h2>
-        <div class="carousel-container">
-            <div class="carousel-track" id="carousel">
-                <div class="testimonial-card active">⭐⭐⭐⭐⭐ "Noticeably less puffy." — Emily R.</div>
-                <div class="testimonial-card">⭐⭐⭐⭐⭐ "Looks more awake." — Jason M.</div>
-                <div class="testimonial-card">⭐⭐⭐⭐⭐ "Friends noticed a change." — Nicole T.</div>
-                <div class="testimonial-card">⭐⭐⭐⭐⭐ "So simple and effective!" — Sarah K.</div>
-                <div class="testimonial-card">⭐⭐⭐⭐⭐ "Game changer for mornings." — Mark D.</div>
-                <div class="testimonial-card">⭐⭐⭐⭐⭐ "My skin feels vibrant." — Elena V.</div>
-                <div class="testimonial-card">⭐⭐⭐⭐⭐ "Finally a real solution." — Tom B.</div>
+        <section class="section container">
+            <div class="box">
+                <h3>Introducing: Glow Reset – 5 Day Skin Recovery Plan</h3>
+                <p>Glow Reset focuses on restoring the internal conditions that influence how your skin looks every morning. We support: hydration balance, fluid movement, circulation, and overnight recovery.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="offer" class="section container">
-        <div class="box" style="border: 2px solid var(--primary); text-align: center;">
-            <h2>Get Instant Access to Glow Reset</h2>
-            <p>✔ 5-Day Plan ✔ Checklist ✔ Step-by-step structure</p>
-            <div id="timer2" style="font-size: 2rem; color: var(--primary);">00:48:57</div>
-            <a href="#" class="cta">Get Instant Access</a>
-        </div>
-    </section>
+        <section class="section container">
+            <h2>Inside The 5-Day Glow Reset</h2>
+            <div class="module-grid">
+                <div class="box module-card"><h4>Day 1 – Internal Reset</h4><p>Stabilize internal signals for hydration balance.</p></div>
+                <div class="box module-card"><h4>Day 2 – Circulation & Fluid</h4><p>Support natural drainage and reduce puffiness.</p></div>
+                <div class="box module-card"><h4>Day 3 – Repair & Support</h4><p>Encourage deeper recovery and resilience.</p></div>
+                <div class="box module-card"><h4>Day 4 – Circulation Activation</h4><p>Stimulate oxygen delivery for brightness.</p></div>
+                <div class="box module-card"><h4>Day 5 – Stabilization</h4><p>Reinforce habits to maintain long-term results.</p></div>
+            </div>
+        </section>
 
-    <section class="container">
-        <h2>Frequently Asked Questions</h2>
-        <div id="faq"></div>
-    </section>
+        <section id="offer" class="section container">
+            <div class="box" style="border: 2px solid #fbbf24; text-align: center;">
+                <h2>Get Instant Access to Glow Reset</h2>
+                <ul style="list-style: none; padding: 0;">
+                    <li>✔ Glow Reset – 5 Day Skin Recovery Plan</li>
+                    <li>✔ Daily Glow Reset Checklist</li>
+                    <li>✔ Simple step-by-step structure</li>
+                </ul>
+                <div style="font-size: 2rem; margin: 20px 0;">[Price Placeholder]</div>
+                <a href="#" class="cta">Get Instant Access</a>
+            </div>
+        </section>
 
-    <footer class="text-center" style="padding: 40px; color: #9ca3af;">© 2026 GLOW RESET PROTOCOL</footer>
+        <section class="section container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-box">
+                <div class="faq-item"><button class="faq-trigger" onclick="toggleFaq(this)">1. Do I need special skincare products? <span>+</span></button><div class="faq-content"><p>No. Glow Reset focuses on internal habits that influence how your skin appears.</p></div></div>
+                <div class="faq-item"><button class="faq-trigger" onclick="toggleFaq(this)">2. Is this a complicated program? <span>+</span></button><div class="faq-content"><p>No. The steps are simple and easy to follow.</p></div></div>
+                <div class="faq-item"><button class="faq-trigger" onclick="toggleFaq(this)">3. How quickly do people notice changes? <span>+</span></button><div class="faq-content"><p>Some participants report improvements within the first few days.</p></div></div>
+                <div class="faq-item"><button class="faq-trigger" onclick="toggleFaq(this)">4. Do I need to change my entire routine? <span>+</span></button><div class="faq-content"><p>No. The plan is designed to fit into normal daily life.</p></div></div>
+                <div class="faq-item"><button class="faq-trigger" onclick="toggleFaq(this)">5. Is there a strict diet involved? <span>+</span></button><div class="faq-content"><p>No strict diets are required.</p></div></div>
+                <div class="faq-item"><button class="faq-trigger" onclick="toggleFaq(this)">6. Can this work for different skin types? <span>+</span></button><div class="faq-content"><p>The method focuses on internal balance that influences skin appearance.</p></div></div>
+                <div class="faq-item"><button class="faq-trigger" onclick="toggleFaq(this)">7. How long do the daily steps take? <span>+</span></button><div class="faq-content"><p>Most steps take only a few minutes.</p></div></div>
+                <div class="faq-item"><button class="faq-trigger" onclick="toggleFaq(this)">8. Can I repeat the reset later? <span>+</span></button><div class="faq-content"><p>Yes, many people repeat it when they feel their skin needs a reset.</p></div></div>
+                <div class="faq-item"><button class="faq-trigger" onclick="toggleFaq(this)">9. What happens after the 5 days? <span>+</span></button><div class="faq-content"><p>You’ll have the structure needed to maintain the habits.</p></div></div>
+                <div class="faq-item"><button class="faq-trigger" onclick="toggleFaq(this)">10. What if it doesn't work for me? <span>+</span></button><div class="faq-content"><p>You’re covered by the 7-day guarantee.</p></div></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center" style="padding: 40px; color: #6b7280; font-size: 0.8rem;">
+        © 2026 Glow Reset. All Rights Reserved.
+    </footer>
 
     <script>
-        // Smooth scroll
-        document.getElementById('cta-link').addEventListener('click', e => { e.preventDefault(); document.querySelector('#offer').scrollIntoView({ behavior: 'smooth' }); });
+        // Background logic (droplets)
+        const canvas = document.getElementById('dropletCanvas');
+        const ctx = canvas.getContext('2d');
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+        
+        function animate() { requestAnimationFrame(animate); } animate();
 
-        // FAQ Logic
-        const faqs = [
-            ["Do I need special skincare products?", "No. Glow Reset focuses on internal habits."],
-            ["Is this a complicated program?", "No. The steps are simple and easy to follow."],
-            ["How quickly do people notice changes?", "Some participants report improvements within the first few days."],
-            ["Do I need to change my entire routine?", "No. The plan fits into normal daily life."],
-            ["Is there a strict diet involved?", "No strict diets are required."],
-            ["Can this work for different skin types?", "Yes, it focuses on internal balance."],
-            ["How long do the daily steps take?", "Most steps take only a few minutes."],
-            ["Can I repeat the reset later?", "Yes, many people repeat it."],
-            ["What happens after the 5 days?", "You'll have the structure to maintain habits."],
-            ["What if it doesn't work for me?", "You’re covered by the 7-day guarantee."]
-        ];
-        const faqDiv = document.getElementById('faq');
-        faqs.forEach((q, i) => {
-            faqDiv.innerHTML += `<div class="faq-item"><button class="faq-trigger" onclick="this.nextElementSibling.style.maxHeight = this.nextElementSibling.style.maxHeight ? null : '100px'"> ${q[0]} <span>+</span></button><div class="faq-content"><p>${q[1]}</p></div></div>`;
-        });
+        // Timer Logic
+        function startTimer(duration) {
+            let timer = duration;
+            setInterval(() => {
+                let h = Math.floor(timer / 3600);
+                let m = Math.floor((timer % 3600) / 60);
+                let s = timer % 60;
+                document.getElementById('h').textContent = String(h).padStart(2, '0');
+                document.getElementById('m').textContent = String(m).padStart(2, '0');
+                document.getElementById('s').textContent = String(s).padStart(2, '0');
+                if (--timer < 0) timer = duration;
+            }, 1000);
+        }
+        startTimer(2937); // 00h 48m 57s
 
-        // Carrossel Simples
-        let index = 0;
-        const items = document.querySelectorAll('.testimonial-card');
-        setInterval(() => {
-            items.forEach(i => i.classList.remove('active'));
-            index = (index + 1) % items.length;
-            items[index].classList.add('active');
-        }, 3000);
-
-        // Canvas & Timer simplificados
-        // [Manter lógica de Canvas original aqui]
+        // FAQ Toggle
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
+        }
     </script>
 </body>
 </html>
