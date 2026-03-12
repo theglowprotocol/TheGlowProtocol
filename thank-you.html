@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Access Confirmed | Deep Glow Reset</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+#dropletCanvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+background:#030508;
+}
+
+.confirm-box{
+max-width:800px;
+margin:0 auto;
+padding:40px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.05);
+background:rgba(255,255,255,0.03);
+}
+
+.step-box{
+margin-top:30px;
+padding:20px;
+background:rgba(255,255,255,0.02);
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.step-box h4{
+color:#fbbf24;
+margin-bottom:8px;
+}
+
+.step-box p{
+color:#d1d5db;
+font-size:0.95rem;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="dropletCanvas"></canvas>
+
+<header class="section">
+<div class="container text-center">
+
+<span style="color:#fbbf24;font-weight:600;text-transform:uppercase;letter-spacing:2px;font-size:0.8rem;">
+Payment Confirmed
+</span>
+
+<h1 style="color:#ffffff;">
+Welcome to the <br>
+<span style="font-style:italic;font-weight:400;font-family:serif;">
+Deep Glow Reset™
+</span>
+</h1>
+
+<p style="margin:0 auto;max-width:600px;color:#e5e7eb;">
+Your order has been successfully processed and your access is being delivered right now.
+</p>
+
+</div>
+</header>
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="confirm-box">
+
+<h2 style="color:#ffffff;">Check Your Email</h2>
+
+<p style="color:#d1d5db;margin-top:15px;">
+We have sent your <strong>Deep Glow Reset™ access instructions</strong> to the email you used during checkout.
+</p>
+
+<div class="step-box">
+<h4>Step 1</h4>
+<p>
+Open the email inbox you used to purchase the Deep Glow Reset™.
+</p>
+</div>
+
+<div class="step-box">
+<h4>Step 2</h4>
+<p>
+Look for an email from <strong>Hotmart</strong> with your access link.
+</p>
+</div>
+
+<div class="step-box">
+<h4>Step 3</h4>
+<p>
+Click the access link inside the email to unlock the full 5-Day Reset protocol.
+</p>
+</div>
+
+<div class="step-box">
+<h4>Didn't receive the email?</h4>
+<p>
+Check your <strong>Spam, Promotions, or Junk folder</strong>. Sometimes the message can appear there.
+</p>
+</div>
+
+<p style="margin-top:30px;color:#9ca3af;font-size:0.9rem;">
+If you still can't find the email, contact support through the Hotmart platform and they will resend your access immediately.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer style="text-align:center;color:#9ca3af;padding:40px 0;">
+© 2026 DEEP GLOW RESET • THE BIOLOGICAL STANDARD
+</footer>
+
+
+<script>
+
+const canvas=document.getElementById('dropletCanvas');
+const ctx=canvas.getContext('2d');
+
+function resizeCanvas(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+
+resizeCanvas();
+
+let droplets=[];
+const config={count:100,speedMin:0.05,speedMax:0.4,baseColor:'180,200,230'};
+
+class Droplet{
+constructor(){this.init(true);}
+init(randomX=false){
+this.y=Math.random()*canvas.height;
+this.x=randomX?(Math.random()*canvas.width):-50;
+this.z=Math.random();
+this.speed=(this.z*(config.speedMax-config.speedMin)+config.speedMin)*0.8;
+this.radius=this.z*3+0.5;
+this.opacity=this.z*0.2+0.02;
+}
+update(){
+this.x+=this.speed;
+if(this.x>canvas.width+50)this.init(false);
+ctx.beginPath();
+ctx.fillStyle=`rgba(${config.baseColor},${this.opacity})`;
+ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+ctx.fill();
+}
+}
+
+function initScene(){
+droplets=[];
+for(let i=0;i<config.count;i++)droplets.push(new Droplet());
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+droplets.forEach(d=>d.update());
+requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize',()=>{
+resizeCanvas();
+initScene();
+});
+
+initScene();
+animate();
+
+</script>
+
+</body>
+</html>
