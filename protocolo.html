@@ -395,7 +395,65 @@ How do I get access?
 
 <script>
 
-/* script original mantido */
+const canvas=document.getElementById('dropletCanvas');
+const ctx=canvas.getContext('2d');
+
+function resizeCanvas(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+
+resizeCanvas();
+
+let droplets=[];
+
+const config={count:100,speedMin:0.05,speedMax:0.4,baseColor:'180,200,230'};
+
+class Droplet{
+constructor(){this.init(true);}
+init(randomX=false){
+this.y=Math.random()*canvas.height;
+this.x=randomX?(Math.random()*canvas.width):-50;
+this.z=Math.random();
+this.speed=(this.z*(config.speedMax-config.speedMin)+config.speedMin)*0.8;
+this.radius=this.z*3+0.5;
+this.opacity=this.z*0.2+0.02;
+}
+update(){
+this.x+=this.speed;
+if(this.x>canvas.width+50)this.init(false);
+ctx.beginPath();
+ctx.fillStyle=`rgba(${config.baseColor},${this.opacity})`;
+ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+ctx.fill();
+}
+}
+
+function initScene(){
+droplets=[];
+for(let i=0;i<config.count;i++)droplets.push(new Droplet());
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+droplets.forEach(d=>d.update());
+requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize',()=>{
+resizeCanvas();
+initScene();
+});
+
+initScene();
+animate();
+
+function toggleFaq(btn){
+const content=btn.nextElementSibling;
+const isOpen=content.style.maxHeight;
+document.querySelectorAll('.faq-content').forEach(c=>c.style.maxHeight=null);
+content.style.maxHeight=(isOpen&&isOpen!=="0px")?null:content.scrollHeight+"px";
+}
 
 </script>
 
