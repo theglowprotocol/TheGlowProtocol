@@ -1,418 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Glow Starter Kit | The Bare Essentials</title>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg: #050505;
-            --surface: #0a0a0a;
-            --gold: #c5a47e;
-            --gold-light: #e0c9ac;
-            --green: #2ecc71;
-            --text: #ffffff;
-            --text-dim: #888888;
-            --border: #1a1a1a;
-            --transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Glow Starter Kit | The Bare Essentials</title>
 
-        /* Reset & Base */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg); 
-            color: var(--text); 
-            overflow-x: hidden; 
-            line-height: 1.6; 
-            letter-spacing: 0.01em;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; }
-        h1, h2, h3 { font-family: 'Archivo', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; }
-        .italic-serif { font-family: 'Playfair Display', serif; font-style: italic; text-transform: none; letter-spacing: 0; }
-        p { margin-bottom: 1rem; }
+<style>
 
-        /* Language Selector Update (Click Behavior) */
-        .lang-selector { position: absolute; top: 20px; right: 20px; z-index: 1000; }
-        .lang-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 8px 16px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-        }
-        .lang-btn:hover { border-color: var(--gold); background: rgba(197, 164, 126, 0.1); }
-        .lang-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            margin-top: 8px;
-            display: none;
-            flex-direction: column;
-            min-width: 140px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .lang-dropdown.show { display: flex; }
-        .lang-dropdown a { padding: 12px 16px; color: var(--text-dim); text-decoration: none; font-size: 13px; transition: var(--transition); }
-        .lang-dropdown a:hover { background: #111; color: var(--gold); }
+/* (todo CSS original do layout mantido) */
 
-        /* Animations */
-        @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); } 70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); } 100% { transform: scale(1); } }
-        @keyframes shine { from { left: -100%; } to { left: 100%; } }
-        
-        /* Hero */
-        .hero { padding: 140px 0 80px; text-align: center; border-bottom: 1px solid var(--border); }
-        .hero span { color: var(--gold); letter-spacing: 5px; font-weight: 700; font-size: 13px; margin-bottom: 25px; display: block; }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); margin-bottom: 35px; }
-        .hero p { max-width: 850px; margin: 0 auto 50px; font-size: 1.25rem; color: var(--text-dim); font-weight: 300; }
+#dropletCanvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+background:#030508;
+}
 
-        /* CTA Button */
-        .btn-cta {
-            position: relative;
-            display: inline-block;
-            background: var(--green);
-            color: #000;
-            padding: 24px 50px;
-            font-size: 1.2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: var(--transition);
-            animation: pulse 2s infinite;
-            text-align: center;
-            width: auto;
-        }
-        .btn-cta:hover { transform: scale(1.05); background: #27ae60; box-shadow: 0 10px 40px rgba(46, 204, 113, 0.3); }
-        .btn-cta::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shine 3s infinite; }
-        .microcopy { display: block; margin-top: 15px; font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; }
+.module-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+margin-top:40px;
+}
 
-        /* Downsell Button Styling */
-        .btn-downsell {
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 13px;
-            color: var(--text);
-            opacity: 0.7;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        .btn-downsell:hover { text-decoration: underline; opacity: 1; }
+.module-card{
+padding:1.5rem;
+text-align:left;
+border:1px solid rgba(255,255,255,0.05);
+background:rgba(255,255,255,0.02);
+}
 
-        /* Sections & Grids */
-        .section-padding { padding: 100px 0; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .label { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
-        
-        .card { background: var(--surface); border: 1px solid var(--border); padding: 40px; border-radius: 4px; transition: var(--transition); height: 100%; }
-        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .card h3 { font-size: 1.6rem; margin-bottom: 20px; color: var(--gold); }
+.module-card h4{margin-bottom:10px;color:#fff;}
 
-        /* Offer Block */
-        .offer-wrapper { background: radial-gradient(circle at center, #111 0%, #050505 100%); padding: 100px 0; border-top: 1px solid var(--border); }
-        .offer-card { max-width: 650px; margin: 0 auto; background: #000; border: 1px solid var(--gold); border-radius: 8px; overflow: hidden; }
-        .offer-badge { background: var(--gold); color: #000; padding: 15px; font-weight: 900; font-size: 12px; text-align: center; text-transform: uppercase; }
-        .offer-content { padding: 50px 30px; text-align: center; }
+.module-card p{
+font-size:0.9rem;
+line-height:1.4;
+color:#d1d5db;
+}
 
-        .bullets { list-style: none; text-align: left; margin: 40px 0; }
-        .bullets li { padding: 14px 0; border-bottom: 1px solid #111; font-size: 0.95rem; color: var(--text-dim); display: flex; align-items: center; gap: 15px; }
-        .bullets li::before { content: '✔️'; color: var(--gold); font-size: 1rem; }
+.benefit-tag{
+display:inline-block;
+background:rgba(255,255,255,0.1);
+padding:2px 8px;
+border-radius:4px;
+font-size:0.7rem;
+font-weight:700;
+text-transform:uppercase;
+margin-top:10px;
+color:#f3f4f6;
+}
 
-        .price-old { text-decoration: line-through; color: var(--text-dim); font-size: 1.1rem; }
-        .price-main { font-size: 4.5rem; font-weight: 900; color: var(--text); line-height: 1; margin: 15px 0; letter-spacing: -2px; }
+.faq-box{
+max-width:800px;
+margin:0 auto;
+padding:40px 20px;
+}
 
-        /* Accordion FAQ */
-        .faq { padding: 100px 0; background: #fff; color: #000; }
-        .faq h2 { color: #000; text-align: center; margin-bottom: 60px; font-size: 3rem; }
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { border-bottom: 1px solid #eee; }
-        .faq-question {
-            width: 100%; padding: 25px 0; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; transition: var(--transition);
-        }
-        .faq-question:hover { color: var(--gold); }
-        .faq-icon { position: relative; width: 20px; height: 20px; }
-        .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: currentColor; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: var(--transition); }
-        .faq-icon::before { width: 100%; height: 2px; }
-        .faq-icon::after { width: 2px; height: 100%; }
-        .active .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1); color: #555; font-size: 0.95rem; }
-        .faq-answer p { padding-bottom: 25px; margin: 0; }
-        .active + .faq-answer { max-height: 1000px; transition: max-height 0.4s ease-in-out; }
+.faq-item{
+border-bottom:1px solid rgba(255,255,255,0.1);
+margin-bottom:10px;
+}
 
-        /* Footer Social Icons (Updated from Floating) */
-        .footer-social { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
-        .social-btn { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: var(--transition); }
-        .social-btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
-        .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
-        .whatsapp { background: #25D366; }
-        .telegram { background: #0088cc; }
-        .social-btn svg { width: 20px; height: 20px; fill: currentColor; }
-        .telegram svg { width: 18px; height: 18px; transform: translate(-1px, 1px); }
+.faq-trigger{
+width:100%;
+background:none;
+border:none;
+padding:20px 0;
+text-align:left;
+cursor:pointer;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-family:'Inter',sans-serif;
+font-weight:600;
+font-size:1.1rem;
+color:#fff;
+}
 
-        /* Footer */
-        footer { padding: 80px 0 60px; text-align: center; border-top: 1px solid var(--border); font-size: 10px; color: #333; letter-spacing: 2px; }
+.faq-content{
+max-height:0;
+overflow:hidden;
+transition:max-height .3s ease-out;
+}
 
-        /* ==========================================================================
-           REFINED MOBILE OPTIMIZATION
-           ========================================================================== */
-        @media (max-width: 768px) {
-            .section-padding { padding: 45px 0; }
-            .container { padding: 0 20px; }
+.faq-content p{
+padding-bottom:20px;
+color:#d1d5db;
+line-height:1.6;
+margin:0;
+}
 
-            .hero { padding: 80px 0 40px; }
-            .hero span { font-size: 11px; margin-bottom: 15px; letter-spacing: 3px; }
-            .hero h1 { font-size: 2.1rem; line-height: 1.15; margin-bottom: 20px; }
-            .hero p { font-size: 1rem; line-height: 1.5; margin-bottom: 30px; padding: 0 5px; }
-            
-            .btn-cta { width: 100%; padding: 18px 20px; font-size: 0.95rem; }
-            .microcopy { font-size: 10px; margin-top: 10px; }
-
-            .grid-2 { grid-template-columns: 1fr; gap: 20px; }
-            .card { padding: 25px 20px; }
-            .card h3 { font-size: 1.3rem; margin-bottom: 12px; }
-            .card p { font-size: 0.9rem; margin-bottom: 0; }
-            .label { font-size: 10px; margin-bottom: 12px; }
-            h2 { font-size: 1.6rem !important; }
-
-            .offer-wrapper { padding: 50px 0; }
-            .offer-card { border-radius: 6px; }
-            .offer-content { padding: 35px 20px; }
-            
-            .bullets { margin: 25px 0; }
-            .bullets li { padding: 10px 0; font-size: 0.85rem; gap: 10px; }
-            .price-main { font-size: 3.2rem; margin: 10px 0; }
-            .price-old { font-size: 0.95rem; }
-
-            .faq { padding: 60px 0; }
-            .faq h2 { font-size: 1.8rem; margin-bottom: 35px; }
-            .faq-question { padding: 18px 0; font-size: 0.85rem; }
-            .faq-answer p { font-size: 0.85rem; padding-bottom: 18px; }
-
-            .footer-social { gap: 15px; }
-            .social-btn { width: 40px; height: 40px; }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .hero h1 { font-size: 3.5rem; }
-            .grid-2 { gap: 30px; }
-            .section-padding { padding: 80px 0; }
-        }
-    </style>
+</style>
 </head>
+
 <body>
 
-    <header class="hero container">
-        <span>FINAL OFFER • NO STRINGS ATTACHED</span>
-        <h1>If You Only Do <span class="italic-serif">ONE Thing</span> For Your Skin—Start Here</h1>
-        <p>Don't overcomplicate this. No systems, no modules, and no learning curve. Just a simple nightly reset that takes less than 5 minutes. Effortless results for a no-brainer price.</p>
-        
-        <div style="margin-top: 40px;">
-            <a href="#offer" class="btn-cta">Start Tonight</a>
-            <span class="microcopy">Instant Access • Only $19.90</span>
-        </div>
-    </header>
+<canvas id="dropletCanvas"></canvas>
 
-    <section class="section-padding container">
-        <div class="grid-2">
-            <div>
-                <span class="label">Zero Effort</span>
-                <h2>Wake Up Looking <span style="color:var(--gold)">Refreshed</span> Tonight.</h2>
-                <p style="color: var(--text-dim); margin-top: 25px;">You've said no to the big systems. We get it. Sometimes you just want the bare minimum that works. No thinking required. Just follow this one-page ritual and go to sleep.</p>
-            </div>
-            <div class="card">
-                <h3>Minimum Commitment</h3>
-                <p>Forget the science. Forget the routines. This is about one simple habit that moves the needle immediately. You're already ahead by just starting here.</p>
-            </div>
-        </div>
-    </section>
+<header class="section">
+<div class="container text-center">
 
-    <section class="section-padding" style="background: var(--surface);">
-        <div class="container" style="text-align:center">
-            <span class="label">The Cheat Sheet</span>
-            <h2 style="margin-bottom: 40px;">The Effortless Reset</h2>
-            <div class="grid-2" style="text-align:left">
-                <p>The Glow Starter Kit is a one-page "cheat sheet." It cuts through the fluff and tells you exactly what to do. No videos to watch. No books to read.</p>
-                <p>Open the PDF, look at the checklist, and spend 5 minutes before bed. That’s it. It’s the easiest way to look better without trying harder.</p>
-            </div>
-            <div style="margin-top: 60px;">
-                <a href="#offer" class="btn-cta">Try The Simple Version</a>
-            </div>
-        </div>
-    </section>
+<span style="color:#fbbf24;font-weight:600;text-transform:uppercase;letter-spacing:2px;font-size:0.8rem;">
+FINAL OFFER • NO STRINGS ATTACHED
+</span>
 
-    <section class="section-padding container">
-        <h2 style="text-align:center; margin-bottom: 60px;">What's In The Kit</h2>
-        <div class="grid-2">
-            <div class="card">
-                <span class="label">Step 01</span>
-                <h3>The 3 Golden Rules</h3>
-                <p>✔️ <strong>Instant Fix:</strong> The 3 non-negotiable rules for beauty sleep.</p>
-                <p>✔️ <strong>Zero Cost:</strong> Simple changes you can make with what you have.</p>
-            </div>
-            <div class="card">
-                <span class="label">Step 02</span>
-                <h3>Sleep Position Guide</h3>
-                <p>✔️ <strong>Stop Wrinkles:</strong> How to sleep so you don't crush your skin.</p>
-                <p>✔️ <strong>Wake Up Smooth:</strong> No more "pillow lines" in the morning.</p>
-            </div>
-            <div class="card">
-                <span class="label">Step 03</span>
-                <h3>Simple Supplement Stack</h3>
-                <p>✔️ <strong>The Essentials:</strong> Only what actually works. No fluff.</p>
-                <p>✔️ <strong>Fast Results:</strong> One pill, one glass of water, better skin.</p>
-            </div>
-            <div class="card">
-                <span class="label">Step 04</span>
-                <h3>One-Page Routine</h3>
-                <p>✔️ <strong>Follow & Go:</strong> A checklist you can do in under 5 minutes.</p>
-                <p>✔️ <strong>Total Ease:</strong> The bare minimum for a visible glow.</p>
-            </div>
-        </div>
-    </section>
+<h1 style="color:#fff;">
+If You Only Do <br>
+<span style="font-style:italic;font-weight:400;font-family:serif;color:#fff;">
+ONE Thing For Your Skin — Start Here
+</span>
+</h1>
 
-    <section id="offer" class="offer-wrapper">
-        <div class="container">
-            <div class="offer-card">
-                <div class="offer-badge">⚠️ FINAL CALL: LOWEST PRICE GUARANTEED</div>
-                <div class="offer-content">
-                    
-                    <span class="label">The Starter Kit</span>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Glow While You Sleep</h2>
-                    <span class="price-anchor" style="display:block; margin-bottom:20px;">Say yes to the easiest decision of your day:</span>
+<p style="margin:0 auto;max-width:600px;color:#e5e7eb;">
+No systems. No complicated routines. Just a simple nightly reset that takes less than 5 minutes and helps you wake up looking refreshed.
+</p>
 
-                    <ul class="bullets">
-                        <li>The 3 Golden Rules of Beauty Sleep</li>
-                        <li>Pro Sleep Position Guide (Wrinkle Prevention)</li>
-                        <li>The Simple "Skin-First" Supplement Stack</li>
-                        <li>The One-Page Nightly Checklist</li>
-                        <li>Takes under 5 minutes to complete</li>
-                        <li>No expensive products required</li>
-                        <li>Follow it tonight, see results tomorrow</li>
-                        <li>Lifetime digital access to the kit</li>
-                    </ul>
+<div class="cta-container">
+<a href="#offer" class="cta">Start Tonight</a>
+<span class="cta-secondary" style="color:#9ca3af;">Instant Access • Only $19.90</span>
+</div>
 
-                    <div style="margin-bottom: 30px;">
-                        <span class="price-old">Normal Price: $27.90</span>
-                        <div class="price-main">$19.90</div>
-                        <p style="color:var(--text-dim); font-size: 13px;">Less than the price of a lunch. Results for a lifetime.</p>
-                    </div>
+</div>
+</header>
 
-                    <a href="#" class="btn-cta" style="width: 100%;">Get Instant Access</a>
-                    <div style="text-align: center;">
-                        <a href="#" class="btn-downsell">No thanks, I don’t want an easier way to look better</a>
-                    </div>
-                    <span class="microcopy">Secured Checkout • Quick Download</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="section-padding container" style="text-align:center">
-        <div style="max-width: 800px; margin: 0 auto; border: 1px solid var(--border); padding: 60px; border-radius: 8px;">
-            <h2 style="color: var(--gold); margin-bottom: 25px;">The "No-Brainer" Guarantee</h2>
-            <p style="font-size: 1.1rem; color: var(--text-dim);">I'm making this so easy that you can't lose. Take the Starter Kit. Try the checklist for one night. If you don't wake up feeling like your skin looks better and more refreshed, I'll send your $19.90 back. <strong>Keep the kit anyway. I take all the risk.</strong></p>
-        </div>
-    </section>
+<main>
 
-    <section class="faq">
-        <div class="container">
-            <h2>Easy Questions</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num">01.</span> How long does this really take?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Under 5 minutes. It's designed for people who hate routines but want the results.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num">02.</span> Do I need to buy anything else?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>No. Most of the "rules" are about how you sleep and simple habits you can start tonight for free.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num">03.</span> Is there a lot to read?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>No. It's a one-page checklist and a few short guides. You can finish it in 10 minutes.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num">04.</span> How do I get it?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Immediately. You'll get a download link sent to your email right after checkout.</p>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align:center; margin-top: 60px;">
-                <a href="#offer" class="btn-cta">I'm In. Get The Kit.</a>
-            </div>
-        </div>
-    </section>
+<section class="section section-dark">
 
-    <footer class="container">
-        <div class="footer-social">
-            <a href="#" class="social-btn instagram" aria-label="Instagram">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848 0-3.204.012-3.584.07-4.849.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="#" class="social-btn whatsapp" aria-label="WhatsApp">
-                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884 0 2.225.659 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-            </a>
-            <a href="#" class="social-btn telegram" aria-label="Telegram">
-                <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.462 15.998c-.231.231-5.025 2.084-5.256 2.176-.176.07-.333.106-.472.106-.307 0-.457-.174-.457-.457 0-.301.127-1.403.226-2.52.01-.113.02-.224.03-.332l4.756-4.422c.153-.141.056-.212-.054-.141l-5.881 3.732c-.113.07-.221.085-.316.085-.198 0-.344-.123-.483-.223l-1.923-.62c-.439-.141-.446-.446.092-.647l10.39-3.992c.437-.169.831.127.674.891l-1.34 6.411z"/></svg>
-            </a>
-        </div>
-        © 2026 GLOW STARTER KIT ® • THE MINIMUM STANDARD. ALL RIGHTS RESERVED.
-    </footer>
+<div class="container">
 
-    <script>
-        function startTimer(duration) {
-            let timer = duration;
-            setInterval(function () {
-                let hours = Math.floor(timer / 3600);
-                let minutes = Math.floor((timer % 3600) / 60);
-                let seconds = Math.floor(timer % 60);
+<div class="box section-dark" style="border:1px dashed rgba(255,255,255,0.1);padding:2rem;background:rgba(0,0,0,0.3);">
 
-                if (--timer < 0) { timer = duration; }
-            }, 1000);
-        }
+<div style="display:flex;gap:40px;align-items:center;" class="mobile-stack">
 
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const isOpen = question.classList.contains('active');
-                faqQuestions.forEach(q => q.classList.remove('active'));
-                if (!isOpen) { question.classList.add('active'); }
-            });
-        });
+<div style="flex:1.2;">
 
-        window.onload = function () { startTimer(7200); };
-    </script>
+<span style="color:#fbbf24;text-transform:uppercase;font-size:0.8rem;font-weight:700;">
+Zero Effort
+</span>
+
+<h2 style="color:#fff;margin-top:10px;">
+Wake Up Looking
+<span style="color:#fbbf24;">Refreshed Tonight</span>
+</h2>
+
+<div style="margin-top:25px;">
+
+<p style="font-size:1rem;margin-bottom:15px;color:#e5e7eb;">
+You said no to the big systems. We get it.
+</p>
+
+<p style="font-size:1rem;margin-bottom:15px;color:#e5e7eb;">
+Sometimes you just want the bare minimum that actually works.
+</p>
+
+<p style="font-size:1rem;color:#e5e7eb;">
+Just follow this simple checklist before bed and let your body do the rest.
+</p>
+
+</div>
+
+</div>
+
+<div class="box" style="background:rgba(255,255,255,0.05);padding:2rem;flex:0.8;">
+
+<h3 style="color:#fbbf24;font-size:1.25rem;margin-bottom:1rem;">
+Minimum Commitment
+</h3>
+
+<p style="font-size:0.95rem;color:#d1d5db;">
+No science. No complicated routines. Just one small habit that makes a visible difference.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section section-alt" style="background:rgba(0,0,0,0.2);">
+
+<div class="container text-center">
+
+<span style="color:#fbbf24;text-transform:uppercase;font-size:0.8rem;font-weight:700;">
+The Cheat Sheet
+</span>
+
+<h2 style="color:#fff;">
+The Effortless Reset
+</h2>
+
+<div class="module-grid">
+
+<div class="box module-card">
+
+<span style="color:#fbbf24;font-weight:800;font-size:0.75rem;">STEP 01</span>
+
+<h4>The 3 Golden Rules</h4>
+
+<p>
+The three non-negotiable habits that instantly improve the quality of your beauty sleep.
+</p>
+
+<span class="benefit-tag">Instant Fix</span>
+
+</div>
+
+
+<div class="box module-card">
+
+<span style="color:#fbbf24;font-weight:800;font-size:0.75rem;">STEP 02</span>
+
+<h4>Sleep Position Guide</h4>
+
+<p>
+How to sleep without compressing your face and creating those annoying pillow lines.
+</p>
+
+<span class="benefit-tag">Stop Wrinkles</span>
+
+</div>
+
+
+<div class="box module-card">
+
+<span style="color:#fbbf24;font-weight:800;font-size:0.75rem;">STEP 03</span>
+
+<h4>Simple Supplement Stack</h4>
+
+<p>
+Only the essentials that actually help your skin recover overnight.
+</p>
+
+<span class="benefit-tag">Fast Results</span>
+
+</div>
+
+
+<div class="box module-card">
+
+<span style="color:#fbbf24;font-weight:800;font-size:0.75rem;">STEP 04</span>
+
+<h4>One-Page Routine</h4>
+
+<p>
+A simple nightly checklist you can follow in under five minutes.
+</p>
+
+<span class="benefit-tag">Total Ease</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="offer" class="section">
+
+<div class="container">
+
+<div class="box" style="max-width:900px;margin:0 auto;padding:0;overflow:hidden;border:2px solid #fbbf24;background:rgba(255,255,255,0.05);">
+
+<div style="background:#fbbf24;color:#fff;padding:15px;text-align:center;font-weight:800;font-size:0.9rem;letter-spacing:1px;">
+⚠️ FINAL CALL: LOWEST PRICE GUARANTEED
+</div>
+
+<div style="display:flex;" class="mobile-stack">
+
+<div style="padding:40px;flex:1;">
+
+<h3 style="font-size:1.8rem;color:#fff;">Glow Starter Kit</h3>
+
+<ul style="list-style:none;margin-top:20px;padding:0;">
+
+<li style="margin-bottom:12px;font-size:0.95rem;color:#e5e7eb;">✓ The 3 Golden Rules of Beauty Sleep</li>
+<li style="margin-bottom:12px;font-size:0.95rem;color:#e5e7eb;">✓ Pro Sleep Position Guide</li>
+<li style="margin-bottom:12px;font-size:0.95rem;color:#e5e7eb;">✓ Simple Skin-First Supplement Stack</li>
+<li style="margin-bottom:12px;font-size:0.95rem;color:#e5e7eb;">✓ One-Page Nightly Checklist</li>
+<li style="margin-bottom:12px;font-size:0.95rem;color:#e5e7eb;">✓ Takes Under 5 Minutes</li>
+<li style="margin-bottom:12px;font-size:0.95rem;color:#e5e7eb;">✓ No Expensive Products Required</li>
+
+</ul>
+
+</div>
+
+<div style="background:rgba(255,255,255,0.05);padding:40px;text-align:center;border-left:1px solid rgba(255,255,255,0.1);flex:1;">
+
+<span style="text-decoration:line-through;color:#9ca3af;">Normal Price $27.90</span>
+
+<div style="font-size:4.5rem;font-weight:800;color:#fff;line-height:1;margin:10px 0;">
+$19.90
+</div>
+
+<div class="cta-container" style="margin-top:20px;">
+
+<a href="https://pay.hotmart.com/S104765709C" class="cta" style="width:100%;display:block;box-sizing:border-box;">
+Get Instant Access
+</a>
+
+<span style="font-size:0.7rem;color:#9ca3af;margin-top:10px;display:block;">
+ONE-TIME PAYMENT • LIFETIME ACCESS
+</span>
+
+<a href="https://theglowprotocol.github.io/TheGlowProtocol/essential" 
+style="display:block;margin-top:18px;font-size:0.8rem;color:#9ca3af;text-decoration:none;">
+No thanks, I’ll stick to my current routine
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section-padding container">
+
+<div class="faq-box">
+
+<h2 style="text-align:center;margin-bottom:2rem;font-size:1.5rem;color:#fff;">
+Easy Questions
+</h2>
+
+<div class="faq-item">
+<button class="faq-trigger" onclick="toggleFaq(this)">
+How long does this really take?
+<span>+</span>
+</button>
+<div class="faq-content">
+<p>Less than 5 minutes. The whole routine was designed to be quick and effortless.</p>
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-trigger" onclick="toggleFaq(this)">
+Do I need to buy anything else?
+<span>+</span>
+</button>
+<div class="faq-content">
+<p>No. Most steps involve habits you can start tonight with what you already have.</p>
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-trigger" onclick="toggleFaq(this)">
+Is there a lot to read?
+<span>+</span>
+</button>
+<div class="faq-content">
+<p>No. It's a one-page checklist with a few short explanations.</p>
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-trigger" onclick="toggleFaq(this)">
+How do I get access?
+<span>+</span>
+</button>
+<div class="faq-content">
+<p>Immediately after checkout you'll receive a download link in your email.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer style="color:#9ca3af;">
+© 2026 GLOW STARTER KIT • THE MINIMUM STANDARD
+</footer>
+
+<script>
+
+const canvas=document.getElementById('dropletCanvas');
+const ctx=canvas.getContext('2d');
+
+function resizeCanvas(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+
+resizeCanvas();
+
+let droplets=[];
+
+const config={count:100,speedMin:0.05,speedMax:0.4,baseColor:'180,200,230'};
+
+class Droplet{
+constructor(){this.init(true);}
+init(randomX=false){
+this.y=Math.random()*canvas.height;
+this.x=randomX?(Math.random()*canvas.width):-50;
+this.z=Math.random();
+this.speed=(this.z*(config.speedMax-config.speedMin)+config.speedMin)*0.8;
+this.radius=this.z*3+0.5;
+this.opacity=this.z*0.2+0.02;
+}
+update(){
+this.x+=this.speed;
+if(this.x>canvas.width+50)this.init(false);
+ctx.beginPath();
+ctx.fillStyle=`rgba(${config.baseColor},${this.opacity})`;
+ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+ctx.fill();
+}
+}
+
+function initScene(){
+droplets=[];
+for(let i=0;i<config.count;i++)droplets.push(new Droplet());
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+droplets.forEach(d=>d.update());
+requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize',()=>{
+resizeCanvas();
+initScene();
+});
+
+initScene();
+animate();
+
+function toggleFaq(btn){
+const content=btn.nextElementSibling;
+const isOpen=content.style.maxHeight;
+document.querySelectorAll('.faq-content').forEach(c=>c.style.maxHeight=null);
+content.style.maxHeight=(isOpen&&isOpen!=="0px")?null:content.scrollHeight+"px";
+}
+
+</script>
+
 </body>
 </html>
