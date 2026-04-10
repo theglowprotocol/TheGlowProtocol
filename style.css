@@ -157,17 +157,53 @@ strong {
 
 /* 6. RESPONSIVIDADE (MOBILE-FIRST REFINEMENT) */
 @media (max-width: 768px) {
-            .mobile-stack { display: block !important; }
-            .mobile-stack > div { 
-                margin-bottom: 0; 
-                border-left: none !important; 
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-            .mobile-stack > div:last-child { border-bottom: none; }
-            h1 { font-size: 2.2rem !important; }
-            .section { padding: 40px 0 !important; }
-            .cta-container { padding: 0 20px; }
-        }
+    .section {
+        padding: 40px 0;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    h1 {
+        font-size: 28px; /* Compact & Professional */
+        line-height: 1.1;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .box {
+        padding: 25px 20px;
+        border-radius: 12px;
+    }
+
+    .cta {
+        width: 100%; /* Full width for thumbs */
+        font-size: 18px;
+        padding: 18px 20px;
+        border-radius: 8px; /* Slightly sharper for compact look */
+    }
+
+    .cta-container {
+        margin: 20px 0;
+    }
+    
+    /* Avoid huge gaps on mobile */
+    .highlight {
+        padding: 30px 0;
+    }
+}
+
+/* 7. PERFORMANCE & CLEANUP */
+.no-scroll { overflow: hidden; }
+button:focus { outline: none; }
 
 /* Subtle Animation for Attention */
 @keyframes pulse {
